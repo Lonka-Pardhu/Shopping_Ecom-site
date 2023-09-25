@@ -84,3 +84,27 @@ input:focus{
     font-size:10px;
     font-weight:600;
 }
+.sub-categories {
+    margin-top: 80px;
+    border-right: 1px solid #a1a1a1;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    align-items: flex-start;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+.sub-categories > h5 {
+    margin: 25px 0 10px 8px;
+    cursor: pointer;
+}
+.sub-categories > span{
+    width: 100%;
+    font-weight: 600;
+    height: 40px;
+    margin-top: 18px;
+    padding-left: 8px;
+    border-bottom: 1px solid #a1a1a1;
+    font-size: 16px;
+}
