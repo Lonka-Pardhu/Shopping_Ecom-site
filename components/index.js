@@ -25,7 +25,7 @@ function showProducts() {
             prdtName.className = "prdt-title";
             prdtName.innerHTML = product.name;
 
-            let prdtPrice = document.createElement('h2');
+            let prdtPrice = document.createElement('h3');
             prdtPrice.className = "prdt-price";
             prdtPrice.innerHTML = product.price;
 
