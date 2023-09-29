@@ -150,3 +150,9 @@ div#feed {
     height: 17px;
     margin: 0 3px 3px 3px;
 }
+.show-more{
+    display: flex;
+    justify-content: center;
+    margin: 0 0 20px 250px;
+    color: red;
+}

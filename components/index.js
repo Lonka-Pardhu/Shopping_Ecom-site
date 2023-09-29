@@ -4,7 +4,9 @@ xhr.open('GET', 'https://nextjs-boilerplate-sgunique.vercel.app/api/products');
 
 xhr.onload = function () {
     let response = JSON.parse(this.response);
-    response.result.forEach(itemData => createPrdt(itemData))
+    for (let i = 0; i < 30; i++) {
+        createPrdt(response.result[i])
+    }
 }
 xhr.send();
 
