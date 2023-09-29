@@ -60,7 +60,7 @@
 input[type="text"] {
     border: none;
     width: 240px;
-    height: 25px;
+    height: 30px;
     background: #F5F5F6;
 }
 input:focus{

@@ -11,10 +11,10 @@ function showProducts() {
             let item = document.createElement('div');
             item.className = "product";
 
-            let prdtWrapper = document.createElement('div')
+            let prdtWrapper = document.createElement('div');
             prdtWrapper.className = "prdt-wrapper";
 
-            let imgContainer = document.createElement('div')
+            let imgContainer = document.createElement('div');
             imgContainer.className = "img-container";
 
             let image = document.createElement('img');
@@ -30,7 +30,7 @@ function showProducts() {
             prdtPrice.innerHTML = product.price;
 
             let prdtRatingContainer = document.createElement('div');
-            prdtRatingContainer.className = 'prdt-rating-container'
+            prdtRatingContainer.className = 'prdt-rating-container';
 
             let prdtRating = document.createElement('h4');
             prdtRating.className = "prdt-rating";
@@ -42,7 +42,7 @@ function showProducts() {
             let prdtReviews = document.createElement('p');
             prdtReviews.innerHTML = `(${product.reviews})`;
 
-            item.appendChild(prdtWrapper)
+            item.appendChild(prdtWrapper);
             prdtWrapper.appendChild(imgContainer);
             imgContainer.appendChild(image);
             prdtWrapper.appendChild(prdtName);
@@ -50,7 +50,7 @@ function showProducts() {
             prdtRatingContainer.appendChild(prdtRating);
             prdtRatingContainer.appendChild(ratingImg);
             prdtRatingContainer.appendChild(prdtReviews);
-            prdtWrapper.appendChild(prdtRatingContainer)
+            prdtWrapper.appendChild(prdtRatingContainer);
             document.getElementById('feed').appendChild(item);
         })
     }
