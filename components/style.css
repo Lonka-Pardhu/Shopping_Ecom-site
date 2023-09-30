@@ -150,16 +150,22 @@ div#feed {
     height: 17px;
     margin: 0 3px 3px 3px;
 }
-#more-products{
+.more-products{
     display: flex;
     justify-content: center;
     margin: 0 0 20px 250px;
 }
-#more-products > button{
+.show-more{
     font-size: 15px;
     border: none;
     background-color: transparent;
     cursor: pointer;
+    letter-spacing: 0;
+    transition: letter-spacing 0.5s ease;
+}
+.show-more:hover {
+    letter-spacing: 2px;
+    color: #4a4a4a;
 }
 
 /* spinner */

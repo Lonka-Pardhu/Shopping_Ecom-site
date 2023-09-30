@@ -1,18 +1,33 @@
-const xhr = new XMLHttpRequest();
 const loader = document.querySelector('.spinner');
+const moreProducts = document.querySelector('.more-products');
 
+function showMore() {
+    var showMoreButton = createElement('button', 'show-more');
+    showMoreButton.innerHTML = 'show more...';
+    showMoreButton.addEventListener('click', () => {
+        console.log('test passed')
+    })
+    moreProducts.appendChild(showMoreButton);
+}
+
+const xhr = new XMLHttpRequest();
+
+//displaying the loader while it takes time to render data/products
 loader.style.display = 'block';
 
 xhr.open('GET', 'https://nextjs-boilerplate-sgunique.vercel.app/api/products');
 
 xhr.onload = function () {
 
+    //disabling the loader when the data/products starts to render
     loader.style.display = 'none'
     const response = JSON.parse(this.response);
 
     for (let i = 0; i < 30; i++) {
         createProductCard(response.result[i])
     }
+    //displaying the show more button only after the feed gets rendered
+    showMore();
 }
 xhr.send();
 
@@ -96,10 +111,3 @@ const createProductCard = function (product) {
     productContainer.appendChild(productPriceElement);
     productContainer.appendChild(productRatingElement);
 }
-
-var showMoreButton = createElement('button', 'show-more');
-showMoreButton.innerHTML = 'show more...';
-showMoreButton.addEventListener('click', () => {
-    console.log('test passed')
-})
-document.getElementById('more-products').appendChild(showMoreButton);
