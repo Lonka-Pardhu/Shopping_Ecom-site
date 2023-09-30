@@ -10,7 +10,6 @@ xhr.onload = function () {
 }
 xhr.send();
 
-
 //tag and class name adding function
 function createElement(tag = 'div', className) {
     const elem = document.createElement(tag);
@@ -29,12 +28,15 @@ function productImage(imageSource) {
     return imgContainer;
 }
 
+//product title function
 function productName(title) {
     const productTitle = createElement('h5', 'product-title');
     productTitle.innerHTML = title;
 
     return productTitle;
 }
+
+//product price function
 function productPrice(price) {
     const productPrice = createElement('h3', 'product-title');
     productPrice.innerHTML = price;
@@ -43,7 +45,7 @@ function productPrice(price) {
 }
 
 //product reviews function
-function getReviews(rating, reviews) {
+function productReviews(rating, reviews) {
     const productRatingContainer = createElement(undefined, 'product-rating-container');
 
     const productRating = createElement('h4', 'product-rating');
@@ -54,19 +56,25 @@ function getReviews(rating, reviews) {
     ratingImage.src = 'https://cdn-icons-png.flaticon.com/128/9715/9715468.png';
     productRatingContainer.appendChild(ratingImage);
 
-    const productReviews = createElement('p', undefined);
-    productReviews.innerHTML = `(${reviews})`;
-    productRatingContainer.appendChild(productReviews);
+    const productReviewedPeople = createElement('p', undefined);
+    productReviewedPeople.innerHTML = `(${reviews})`;
+    productRatingContainer.appendChild(productReviewedPeople);
 
     return productRatingContainer;
 }
 
+//product div main function
+function productCard() {
+    const productElement = createElement(undefined, 'product');
+    const productWrapper = createElement(undefined, 'product-wrapper');
+    productElement.appendChild(productWrapper);
+
+    document.getElementById('feed').appendChild(productElement);
+    return productWrapper;
+}
 
 const createProductCard = function (product) {
-
-    const productElement = createElement(undefined, 'product');
-
-    const productWrapper = createElement(undefined, 'product-wrapper');
+    const productContainer = productCard();
 
     const productImageElement = productImage(product.image);
 
@@ -74,13 +82,10 @@ const createProductCard = function (product) {
 
     const productPriceElement = productPrice(product.price)
 
-    const productRatingElement = getReviews(product.rating, product.reviews);
+    const productRatingElement = productReviews(product.rating, product.reviews);
 
-
-    productElement.appendChild(productWrapper);
-    productWrapper.appendChild(productImageElement);
-    productWrapper.appendChild(productTitleElement);
-    productWrapper.appendChild(productPriceElement);
-    productWrapper.appendChild(productRatingElement);
-    document.getElementById('feed').appendChild(productElement);
+    productContainer.appendChild(productImageElement);
+    productContainer.appendChild(productTitleElement);
+    productContainer.appendChild(productPriceElement);
+    productContainer.appendChild(productRatingElement);
 }
