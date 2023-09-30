@@ -121,14 +121,14 @@ div#feed {
     width: 320px;
     height: 525px;
 }
-.prdt-wrapper {
+.product-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
-.prdt-wrapper > h5 {
+.product-wrapper > h5 {
     margin-top: 10px;
     width: 280px;
 }
@@ -141,7 +141,7 @@ div#feed {
     height: 100%;
     object-fit: cover;
 }
-.prdt-rating-container{
+.product-rating-container{
     display: flex;
     align-items: center;
 }

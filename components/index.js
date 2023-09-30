@@ -1,58 +1,86 @@
-let xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 
 xhr.open('GET', 'https://nextjs-boilerplate-sgunique.vercel.app/api/products');
 
 xhr.onload = function () {
-    let response = JSON.parse(this.response);
+    const response = JSON.parse(this.response);
     for (let i = 0; i < 30; i++) {
-        createPrdt(response.result[i])
+        createProductCard(response.result[i])
     }
 }
 xhr.send();
 
-const createPrdt = function (product) {
-    let item = document.createElement('div');
-    item.className = "product";
 
-    let prdtWrapper = document.createElement('div');
-    prdtWrapper.className = "prdt-wrapper";
+//tag and class name adding function
+function createElement(tag = 'div', className) {
+    const elem = document.createElement(tag);
+    elem.className = className;
 
-    let imgContainer = document.createElement('div');
-    imgContainer.className = "img-container";
+    return elem;
+}
 
-    let image = document.createElement('img');
-    image.className = "prdt-img";
-    image.src = product.image;
-
-    let prdtName = document.createElement('h5');
-    prdtName.className = "prdt-title";
-    prdtName.innerHTML = product.name;
-
-    let prdtPrice = document.createElement('h3');
-    prdtPrice.className = "prdt-price";
-    prdtPrice.innerHTML = product.price;
-
-    let prdtRatingContainer = document.createElement('div');
-    prdtRatingContainer.className = 'prdt-rating-container';
-
-    let prdtRating = document.createElement('h4');
-    prdtRating.className = "prdt-rating";
-    prdtRating.innerHTML = product.rating;
-    let ratingImg = document.createElement('img');
-    ratingImg.className = "star-img";
-    ratingImg.src = 'https://cdn-icons-png.flaticon.com/128/9715/9715468.png';
-
-    let prdtReviews = document.createElement('p');
-    prdtReviews.innerHTML = `(${product.reviews})`;
-
-    item.appendChild(prdtWrapper);
-    prdtWrapper.appendChild(imgContainer);
+//product image function
+function productImage(imageSource) {
+    const imgContainer = createElement(undefined, 'img-container');
+    const image = createElement('img', 'product-img');
+    image.src = imageSource;
     imgContainer.appendChild(image);
-    prdtWrapper.appendChild(prdtName);
-    prdtWrapper.appendChild(prdtPrice);
-    prdtRatingContainer.appendChild(prdtRating);
-    prdtRatingContainer.appendChild(ratingImg);
-    prdtRatingContainer.appendChild(prdtReviews);
-    prdtWrapper.appendChild(prdtRatingContainer);
-    document.getElementById('feed').appendChild(item);
+
+    return imgContainer;
+}
+
+function productName(title) {
+    const productTitle = createElement('h5', 'product-title');
+    productTitle.innerHTML = title;
+
+    return productTitle;
+}
+function productPrice(price) {
+    const productPrice = createElement('h3', 'product-title');
+    productPrice.innerHTML = price;
+
+    return productPrice;
+}
+
+//product reviews function
+function getReviews(rating, reviews) {
+    const productRatingContainer = createElement(undefined, 'product-rating-container');
+
+    const productRating = createElement('h4', 'product-rating');
+    productRating.innerHTML = rating;
+    productRatingContainer.appendChild(productRating);
+
+    const ratingImage = createElement('img', 'star-img');
+    ratingImage.src = 'https://cdn-icons-png.flaticon.com/128/9715/9715468.png';
+    productRatingContainer.appendChild(ratingImage);
+
+    const productReviews = createElement('p', undefined);
+    productReviews.innerHTML = `(${reviews})`;
+    productRatingContainer.appendChild(productReviews);
+
+    return productRatingContainer;
+}
+
+
+const createProductCard = function (product) {
+
+    const productElement = createElement(undefined, 'product');
+
+    const productWrapper = createElement(undefined, 'product-wrapper');
+
+    const productImageElement = productImage(product.image);
+
+    const productTitleElement = productName(product.name);
+
+    const productPriceElement = productPrice(product.price)
+
+    const productRatingElement = getReviews(product.rating, product.reviews);
+
+
+    productElement.appendChild(productWrapper);
+    productWrapper.appendChild(productImageElement);
+    productWrapper.appendChild(productTitleElement);
+    productWrapper.appendChild(productPriceElement);
+    productWrapper.appendChild(productRatingElement);
+    document.getElementById('feed').appendChild(productElement);
 }
