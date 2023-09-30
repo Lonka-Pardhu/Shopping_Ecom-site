@@ -150,9 +150,42 @@ div#feed {
     height: 17px;
     margin: 0 3px 3px 3px;
 }
-.show-more{
+#more-products{
     display: flex;
     justify-content: center;
     margin: 0 0 20px 250px;
-    color: red;
 }
+#more-products > button{
+    font-size: 15px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* spinner */
+.spinner-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.spinner {
+    width: 50px;
+    padding: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #000;
+    --_m: 
+      conic-gradient(#0000 10%,#000),
+      linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+    -webkit-mask-composite: source-out;
+            mask-composite: subtract;
+    animation: s3 1s infinite linear;
+  }
+  @keyframes s3 {to{transform: rotate(1turn)}}

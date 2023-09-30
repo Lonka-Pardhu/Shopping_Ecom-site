@@ -1,16 +1,22 @@
 const xhr = new XMLHttpRequest();
+const loader = document.querySelector('.spinner');
+
+loader.style.display = 'block';
 
 xhr.open('GET', 'https://nextjs-boilerplate-sgunique.vercel.app/api/products');
 
 xhr.onload = function () {
+
+    loader.style.display = 'none'
     const response = JSON.parse(this.response);
+
     for (let i = 0; i < 30; i++) {
         createProductCard(response.result[i])
     }
 }
 xhr.send();
 
-//tag and class name adding function
+//function that helps creating tag element & adds class name
 function createElement(tag = 'div', className) {
     const elem = document.createElement(tag);
     elem.className = className;
@@ -69,6 +75,7 @@ function productCard() {
     const productWrapper = createElement(undefined, 'product-wrapper');
     productElement.appendChild(productWrapper);
 
+
     document.getElementById('feed').appendChild(productElement);
     return productWrapper;
 }
@@ -89,3 +96,10 @@ const createProductCard = function (product) {
     productContainer.appendChild(productPriceElement);
     productContainer.appendChild(productRatingElement);
 }
+
+var showMoreButton = createElement('button', 'show-more');
+showMoreButton.innerHTML = 'show more...';
+showMoreButton.addEventListener('click', () => {
+    console.log('test passed')
+})
+document.getElementById('more-products').appendChild(showMoreButton);
