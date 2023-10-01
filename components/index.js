@@ -17,12 +17,14 @@ function getProducts(url, type, callback) {
     loader.style.display = 'block';
 
     xhr.open('GET', url);
-
     xhr.onload = function () {
         //disabling the loader when the data/products starts to render
         loader.style.display = 'none'
-        const response = xhr.response;
-        callback(response.result);
+        for (let i = 0; i < 30; i++) {
+            callback(xhr.response.result[i])
+        }
+        // const response = xhr.response;
+        // callback(response.result);
         //displaying the show more button only after the feed gets rendered
         showMore();
     }
@@ -92,23 +94,26 @@ function productCard() {
     return productWrapper;
 }
 
-function createProductCard(productData) {
-    productData.forEach(product => {
+function createProductCard(product) {
+    // productData.forEach(product => {
+    // for (let i = 0; i < 30; i++) {
+    //     let product = productData[i]
 
-        const productContainer = productCard();
+    const productContainer = productCard();
 
-        const productImageElement = productImage(product.image);
+    const productImageElement = productImage(product.image);
 
-        const productTitleElement = productName(product.name);
+    const productTitleElement = productName(product.name);
 
-        const productPriceElement = productPrice(product.price)
+    const productPriceElement = productPrice(product.price)
 
-        const productRatingElement = productReviews(product.rating, product.reviews);
+    const productRatingElement = productReviews(product.rating, product.reviews);
 
-        productContainer.appendChild(productImageElement);
-        productContainer.appendChild(productTitleElement);
-        productContainer.appendChild(productPriceElement);
-        productContainer.appendChild(productRatingElement);
-    });
+    productContainer.appendChild(productImageElement);
+    productContainer.appendChild(productTitleElement);
+    productContainer.appendChild(productPriceElement);
+    productContainer.appendChild(productRatingElement);
+    // }
+    // });
 }
 getProducts('https://nextjs-boilerplate-sgunique.vercel.app/api/products', 'json', createProductCard)
