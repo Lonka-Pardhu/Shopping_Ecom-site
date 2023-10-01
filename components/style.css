@@ -161,7 +161,7 @@ div#feed {
     background-color: transparent;
     cursor: pointer;
     letter-spacing: 0;
-    transition: letter-spacing 0.5s ease;
+    transition: letter-spacing 0.3s ease;
 }
 .show-more:hover {
     letter-spacing: 2px;
@@ -182,6 +182,7 @@ div#feed {
 .spinner {
     width: 50px;
     padding: 8px;
+    margin: 20px 0 0 180px;
     aspect-ratio: 1;
     border-radius: 50%;
     background: #000;

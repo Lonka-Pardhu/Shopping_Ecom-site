@@ -10,27 +10,24 @@ function showMore() {
     moreProducts.appendChild(showMoreButton);
 }
 
-const xhr = new XMLHttpRequest();
+function getProducts(url, type, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = type;
+    //displaying the loader while it takes time to render data/products
+    loader.style.display = 'block';
 
-//displaying the loader while it takes time to render data/products
-loader.style.display = 'block';
+    xhr.open('GET', url);
 
-xhr.open('GET', 'https://nextjs-boilerplate-sgunique.vercel.app/api/products');
-
-xhr.onload = function () {
-
-    //disabling the loader when the data/products starts to render
-    loader.style.display = 'none'
-    const response = JSON.parse(this.response);
-
-    for (let i = 0; i < 30; i++) {
-        createProductCard(response.result[i])
+    xhr.onload = function () {
+        //disabling the loader when the data/products starts to render
+        loader.style.display = 'none'
+        const response = xhr.response;
+        callback(response.result);
+        //displaying the show more button only after the feed gets rendered
+        showMore();
     }
-    //displaying the show more button only after the feed gets rendered
-    showMore();
+    xhr.send();
 }
-xhr.send();
-
 //function that helps creating tag element & adds class name
 function createElement(tag = 'div', className) {
     const elem = document.createElement(tag);
@@ -95,19 +92,23 @@ function productCard() {
     return productWrapper;
 }
 
-const createProductCard = function (product) {
-    const productContainer = productCard();
+function createProductCard(productData) {
+    productData.forEach(product => {
 
-    const productImageElement = productImage(product.image);
+        const productContainer = productCard();
 
-    const productTitleElement = productName(product.name);
+        const productImageElement = productImage(product.image);
 
-    const productPriceElement = productPrice(product.price)
+        const productTitleElement = productName(product.name);
 
-    const productRatingElement = productReviews(product.rating, product.reviews);
+        const productPriceElement = productPrice(product.price)
 
-    productContainer.appendChild(productImageElement);
-    productContainer.appendChild(productTitleElement);
-    productContainer.appendChild(productPriceElement);
-    productContainer.appendChild(productRatingElement);
+        const productRatingElement = productReviews(product.rating, product.reviews);
+
+        productContainer.appendChild(productImageElement);
+        productContainer.appendChild(productTitleElement);
+        productContainer.appendChild(productPriceElement);
+        productContainer.appendChild(productRatingElement);
+    });
 }
+getProducts('https://nextjs-boilerplate-sgunique.vercel.app/api/products', 'json', createProductCard)
