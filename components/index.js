@@ -1,14 +1,6 @@
 const loader = document.querySelector('.spinner');
 const moreProducts = document.querySelector('.more-products');
 
-function showMore() {
-    var showMoreButton = createElement('button', 'show-more');
-    showMoreButton.innerHTML = 'show more...';
-    showMoreButton.addEventListener('click', () => {
-        console.log('test passed')
-    })
-    moreProducts.appendChild(showMoreButton);
-}
 
 function getProducts(url, type, callback) {
     const xhr = new XMLHttpRequest();
@@ -20,11 +12,36 @@ function getProducts(url, type, callback) {
     xhr.onload = function () {
         //disabling the loader when the data/products starts to render
         loader.style.display = 'none'
-        for (let i = 0; i < 30; i++) {
-            callback(xhr.response.result[i])
+        let productArrayLength = xhr.response.result.length;
+
+        var initialIndex = 0;
+        var finalIndex = 30;
+        var thirtyProducts = xhr.response.result.slice(initialIndex, finalIndex);
+
+        callback(thirtyProducts)
+
+        function showMore() {
+            var showMoreButton = createElement('button', 'show-more');
+            showMoreButton.innerHTML = 'show more...';
+            showMoreButton.addEventListener('click', () => {
+                initialIndex += 30;
+                finalIndex += 30;
+
+                thirtyProducts = xhr.response.result.slice(initialIndex, finalIndex);
+                callback(thirtyProducts);
+                if (finalIndex >= productArrayLength) {
+                    showMoreButton.innerHTML = 'Go to top <span class="up-arrow">&#9650;</span>';
+                    showMoreButton.addEventListener('click', () => {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }
+            })
+            moreProducts.appendChild(showMoreButton);
         }
-        // const response = xhr.response;
-        // callback(response.result);
+
         //displaying the show more button only after the feed gets rendered
         showMore();
     }
@@ -94,26 +111,26 @@ function productCard() {
     return productWrapper;
 }
 
-function createProductCard(product) {
-    // productData.forEach(product => {
-    // for (let i = 0; i < 30; i++) {
-    //     let product = productData[i]
+function createProductCard(productData) {
+    productData.forEach(product => {
+        // for (let i = 0; i < 30; i++) {
+        //     let product = productData[i]
 
-    const productContainer = productCard();
+        const productContainer = productCard();
 
-    const productImageElement = productImage(product.image);
+        const productImageElement = productImage(product.image);
 
-    const productTitleElement = productName(product.name);
+        const productTitleElement = productName(product.name);
 
-    const productPriceElement = productPrice(product.price)
+        const productPriceElement = productPrice(product.price)
 
-    const productRatingElement = productReviews(product.rating, product.reviews);
+        const productRatingElement = productReviews(product.rating, product.reviews);
 
-    productContainer.appendChild(productImageElement);
-    productContainer.appendChild(productTitleElement);
-    productContainer.appendChild(productPriceElement);
-    productContainer.appendChild(productRatingElement);
-    // }
-    // });
+        productContainer.appendChild(productImageElement);
+        productContainer.appendChild(productTitleElement);
+        productContainer.appendChild(productPriceElement);
+        productContainer.appendChild(productRatingElement);
+        // }
+    });
 }
 getProducts('https://nextjs-boilerplate-sgunique.vercel.app/api/products', 'json', createProductCard)
