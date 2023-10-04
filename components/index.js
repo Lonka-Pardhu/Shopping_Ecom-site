@@ -3,49 +3,57 @@ const moreProducts = document.querySelector('.more-products');
 
 
 function getProducts(url, type, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.responseType = type;
-    //displaying the loader while it takes time to render data/products
-    loader.style.display = 'block';
+    fetch(url)
+        .then(response => {
 
-    xhr.open('GET', url);
-    xhr.onload = function () {
-        //disabling the loader when the data/products starts to render
-        loader.style.display = 'none'
-        let productArrayLength = xhr.response.result.length;
+            //displaying the loader while it takes time to render data/products
+            loader.style.display = 'block';
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response[type](); // Convert the response to the specified type (e.g., 'json')
+        })
+        .then(object => {
 
-        var initialIndex = 0;
-        var finalIndex = 30;
-        var thirtyProducts = xhr.response.result.slice(initialIndex, finalIndex);
+            //disabling the loader when the data/products starts to render
+            loader.style.display = 'none'
 
-        callback(thirtyProducts)
+            let productArrayLength = object.result.length;
 
-        function showMore() {
-            var showMoreButton = createElement('button', 'show-more');
-            showMoreButton.innerHTML = 'show more...';
-            showMoreButton.addEventListener('click', () => {
-                initialIndex += 30;
-                finalIndex += 30;
+            var initialIndex = 0;
+            var finalIndex = 30;
+            var thirtyProducts = object.result.slice(initialIndex, finalIndex);
 
-                thirtyProducts = xhr.response.result.slice(initialIndex, finalIndex);
-                callback(thirtyProducts);
-                if (finalIndex >= productArrayLength) {
-                    showMoreButton.innerHTML = 'Go to top <span class="up-arrow">&#9650;</span>';
-                    showMoreButton.addEventListener('click', () => {
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
-                    })
-                }
-            })
-            moreProducts.appendChild(showMoreButton);
-        }
+            callback(thirtyProducts)
 
-        //displaying the show more button only after the feed gets rendered
-        showMore();
-    }
-    xhr.send();
+            function showMore() {
+                var showMoreButton = createElement('button', 'show-more');
+                showMoreButton.innerHTML = 'show more...';
+                showMoreButton.addEventListener('click', () => {
+                    initialIndex += 30;
+                    finalIndex += 30;
+
+                    thirtyProducts = object.result.slice(initialIndex, finalIndex);
+                    callback(thirtyProducts);
+                    if (finalIndex >= productArrayLength) {
+                        showMoreButton.innerHTML = 'Go to top <span class="up-arrow">&#9650;</span>';
+                        showMoreButton.addEventListener('click', () => {
+                            window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
+                        })
+                    }
+                })
+                moreProducts.appendChild(showMoreButton);
+            }
+
+            //displaying the show more button only after the feed gets rendered
+            showMore();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 //function that helps creating tag element & adds class name
 function createElement(tag = 'div', className) {
