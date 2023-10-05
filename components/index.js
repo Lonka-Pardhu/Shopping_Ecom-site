@@ -9,7 +9,7 @@ function getProducts(url, type, callback) {
             if (response.ok) {
                 return response[type]();
             } else {
-                console.log("error occurred")
+                console.log("error occurred" + response.status)
             }
         })
         .then(data => {
@@ -27,18 +27,28 @@ function getProducts(url, type, callback) {
                 var showMoreButton = createElement('button', 'show-more');
                 showMoreButton.innerHTML = 'show more...';
                 showMoreButton.addEventListener('click', () => {
-                    initialIndex += 30;
-                    finalIndex += 30;
-
+                    if (finalIndex === productArrayLength) {
+                        finalIndex = productArrayLength;
+                        initialIndex = productArrayLength - 30;
+                    } else {
+                        initialIndex += 30;
+                        finalIndex += 30;
+                    }
+                    console.log("initial :" + initialIndex, "final :" + finalIndex)
                     thirtyProducts = data.result.slice(initialIndex, finalIndex);
                     callback(thirtyProducts);
                     if (finalIndex >= productArrayLength) {
-                        showMoreButton.innerHTML = 'Go to top <span class="up-arrow">&#9650;</span>';
+                        showMoreButton.innerHTML = 'show less...';
                         showMoreButton.addEventListener('click', () => {
-                            window.scrollTo({
-                                top: 0,
-                                behavior: 'smooth'
-                            });
+                            if (initialIndex >= 30) {
+                                initialIndex -= 30;
+                                finalIndex -= 30;
+                                thirtyProducts = data.result.slice(initialIndex, finalIndex);
+                                callback(thirtyProducts);
+                            } else {
+                                showMoreButton.innerHTML = 'show more...';
+                                showMoreButton.removeEventListener('click', null);
+                            }
                         })
                     }
                 })
