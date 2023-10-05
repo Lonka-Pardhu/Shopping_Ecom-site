@@ -1,28 +1,25 @@
 const loader = document.querySelector('.spinner');
 const moreProducts = document.querySelector('.more-products');
 
-
 function getProducts(url, type, callback) {
     fetch(url)
         .then(response => {
 
-            //displaying the loader while it takes time to render data/products
             loader.style.display = 'block';
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+            if (response.ok) {
+                return response[type]();
+            } else {
+                console.log("error occurred")
             }
-            return response[type](); // Convert the response to the specified type (e.g., 'json')
         })
-        .then(object => {
+        .then(data => {
+            loader.style.display = 'none';
 
-            //disabling the loader when the data/products starts to render
-            loader.style.display = 'none'
-
-            let productArrayLength = object.result.length;
+            let productArrayLength = data.result.length;
 
             var initialIndex = 0;
             var finalIndex = 30;
-            var thirtyProducts = object.result.slice(initialIndex, finalIndex);
+            var thirtyProducts = data.result.slice(initialIndex, finalIndex);
 
             callback(thirtyProducts)
 
@@ -33,7 +30,7 @@ function getProducts(url, type, callback) {
                     initialIndex += 30;
                     finalIndex += 30;
 
-                    thirtyProducts = object.result.slice(initialIndex, finalIndex);
+                    thirtyProducts = data.result.slice(initialIndex, finalIndex);
                     callback(thirtyProducts);
                     if (finalIndex >= productArrayLength) {
                         showMoreButton.innerHTML = 'Go to top <span class="up-arrow">&#9650;</span>';
@@ -51,9 +48,7 @@ function getProducts(url, type, callback) {
             //displaying the show more button only after the feed gets rendered
             showMore();
         })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+        .catch(error => console.log(error))
 }
 //function that helps creating tag element & adds class name
 function createElement(tag = 'div', className) {
