@@ -1,10 +1,12 @@
 const loader = document.querySelector('.spinner');
-const moreProducts = document.querySelector('.more-products');
+const moreButton = document.querySelector('.more-button');
+const lessButton = document.querySelector('.less-button')
 
+lessButton.style.display = 'none'
 function getProducts(url, type, callback) {
+    moreButton.style.display = 'none'
     fetch(url)
         .then(response => {
-
             loader.style.display = 'block';
             if (response.ok) {
                 return response[type]();
@@ -13,6 +15,7 @@ function getProducts(url, type, callback) {
             }
         })
         .then(data => {
+            moreButton.style.display = 'block';
             loader.style.display = 'none';
 
             let productArrayLength = data.result.length;
@@ -24,35 +27,17 @@ function getProducts(url, type, callback) {
             callback(thirtyProducts)
 
             function showMore() {
-                var showMoreButton = createElement('button', 'show-more');
-                showMoreButton.innerHTML = 'show more...';
-                showMoreButton.addEventListener('click', () => {
+                moreButton.addEventListener('click', () => {
                     if (finalIndex === productArrayLength) {
                         finalIndex = productArrayLength;
                         initialIndex = productArrayLength - 30;
                     } else {
                         initialIndex += 30;
                         finalIndex += 30;
-                    }
-                    console.log("initial :" + initialIndex, "final :" + finalIndex)
-                    thirtyProducts = data.result.slice(initialIndex, finalIndex);
-                    callback(thirtyProducts);
-                    if (finalIndex >= productArrayLength) {
-                        showMoreButton.innerHTML = 'show less...';
-                        showMoreButton.addEventListener('click', () => {
-                            if (initialIndex >= 30) {
-                                initialIndex -= 30;
-                                finalIndex -= 30;
-                                thirtyProducts = data.result.slice(initialIndex, finalIndex);
-                                callback(thirtyProducts);
-                            } else {
-                                showMoreButton.innerHTML = 'show more...';
-                                showMoreButton.removeEventListener('click', null);
-                            }
-                        })
+                        thirtyProducts = data.result.slice(initialIndex, finalIndex);
+                        callback(thirtyProducts);
                     }
                 })
-                moreProducts.appendChild(showMoreButton);
             }
 
             //displaying the show more button only after the feed gets rendered
@@ -60,6 +45,10 @@ function getProducts(url, type, callback) {
         })
         .catch(error => console.log(error))
 }
+function showLess() {
+
+}
+showLess();
 //function that helps creating tag element & adds class name
 function createElement(tag = 'div', className) {
     const elem = document.createElement(tag);
@@ -126,8 +115,6 @@ function productCard() {
 
 function createProductCard(productData) {
     productData.forEach(product => {
-        // for (let i = 0; i < 30; i++) {
-        //     let product = productData[i]
 
         const productContainer = productCard();
 
@@ -143,7 +130,7 @@ function createProductCard(productData) {
         productContainer.appendChild(productTitleElement);
         productContainer.appendChild(productPriceElement);
         productContainer.appendChild(productRatingElement);
-        // }
+
     });
 }
 getProducts('https://nextjs-boilerplate-sgunique.vercel.app/api/products', 'json', createProductCard)

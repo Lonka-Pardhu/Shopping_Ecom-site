@@ -150,22 +150,37 @@ div#feed {
     height: 17px;
     margin: 0 3px 3px 3px;
 }
-.more-products{
+.more-less-btn-container{
     display: flex;
     justify-content: center;
     margin: 0 0 20px 250px;
 }
-.show-more{
-    font-size: 15px;
+.more-button {
+    height:40px;
+    width:40px;
+    background:white;
+    border-radius:50%;
     border: none;
-    background-color: transparent;
-    cursor: pointer;
-    letter-spacing: 0;
-    transition: letter-spacing 0.3s ease;
+    cursor:pointer;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    transition: transform 0.2s ease;
 }
-.show-more:hover {
-    letter-spacing: 2px;
-    color: #4a4a4a;
+.more-button:hover{
+    transform: translateY(5px);
+}
+.less-button{
+    margin-left:20px; 
+    height:40px;
+    width:40px;
+    background:white;
+    border-radius:50%;
+    border: none;
+    cursor:pointer;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    transition: transform 0.2s ease;
+}
+.less-button:hover{
+    transform: translateY(-5px);
 }
 
 /* spinner */
