@@ -28,27 +28,51 @@ function getProducts(url, type, callback) {
 
             function showMore() {
                 moreButton.addEventListener('click', () => {
-                    if (finalIndex === productArrayLength) {
-                        finalIndex = productArrayLength;
-                        initialIndex = productArrayLength - 30;
-                    } else {
+                    console.log('before' + initialIndex, finalIndex)
+                    if (finalIndex !== productArrayLength) {
                         initialIndex += 30;
                         finalIndex += 30;
                         thirtyProducts = data.result.slice(initialIndex, finalIndex);
                         callback(thirtyProducts);
+                        lessButton.style.display = 'block'
+
+                    } else {
+                        finalIndex = productArrayLength;
+                        initialIndex = finalIndex - 30;
                     }
+                    console.log('after' + initialIndex, finalIndex)
                 })
             }
 
-            //displaying the show more button only after the feed gets rendered
+            function showLess() {
+                lessButton.addEventListener('click', () => {
+
+                    console.log('initial:' + initialIndex, 'final:' + finalIndex)
+                    initialIndex = initialIndex - 30;
+                    finalIndex = finalIndex - 30;
+
+                    // Remove the products beyond the first 30
+                    const productsToRemove = document.querySelectorAll('.product');
+                    console.log(productsToRemove.length)
+                    for (let i = initialIndex + 30; i < productsToRemove.length; i++) {
+                        productsToRemove[i].remove();
+                    }
+                    console.log('initial:' + initialIndex, 'final:' + finalIndex)
+
+                    // Hiding "Show Less" button if we're at the beginning
+                    if (initialIndex === 0) {
+                        lessButton.style.display = 'none';
+                    }
+                });
+            }
+
+            //calling the showMore function after the first thirty products loads
             showMore();
+            showLess();
         })
         .catch(error => console.log(error))
 }
-function showLess() {
 
-}
-showLess();
 //function that helps creating tag element & adds class name
 function createElement(tag = 'div', className) {
     const elem = document.createElement(tag);
