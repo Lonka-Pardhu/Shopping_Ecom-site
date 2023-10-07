@@ -6,6 +6,7 @@ var productArrayLength = null;
 var initialIndex = undefined;
 var finalIndex = undefined;
 var thirtyProducts = undefined;
+var data = null;
 lessButton.style.display = 'none'
 moreButton.style.display = 'none'
 
@@ -38,7 +39,6 @@ function getProducts(url, type, callback) {
         })
         .catch(error => console.log(error))
 }
-
 function showMore(callback) {
     moreButton.addEventListener('click', () => {
         if (finalIndex !== productArrayLength) {
