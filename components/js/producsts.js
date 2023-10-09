@@ -70,4 +70,4 @@ function createProductCard(productData) {
 
     });
 }
-getProducts('https://nextjs-boilerplate-sgunique.vercel.app/api/products', 'json', createProductCard)
+getProducts('https://nextjs-boilerplate-sgunique.vercel.app/api/products', createProductCard)

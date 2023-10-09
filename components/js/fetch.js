@@ -1,29 +1,49 @@
-function getProducts(url, type, callback) {
+var data;
+var storedData;
+var initialIndex = 0;
+var finalIndex = 30;
+var productArrayLength;
+var thirtyProducts;
+const loader = document.querySelector('.spinner');
+
+function getProducts(url, callback) {
+    storedData = JSON.parse(window.localStorage.getItem('apiData'));
+
+    if (storedData) {
+        data = storedData;
+        thirtyProducts = data.result.slice(initialIndex, finalIndex);
+        callback(thirtyProducts);
+        loader.style.display = 'none';
+        moreButton.style.display = 'block';
+        showMore(callback);
+        showLess()
+        return;
+    }
+
     fetch(url)
         .then(response => {
             loader.style.display = 'block';
             if (response.ok) {
-                return response[type]();
+                return response.json();
             } else {
                 console.log("error occurred" + response.status)
             }
         })
         .then(dataResponse => {
             data = dataResponse;
-            loader.style.display = 'none';
-            moreButton.style.display = 'block';
 
             productArrayLength = data.result.length;
-
-            initialIndex = 0;
-            finalIndex = 30;
             thirtyProducts = data.result.slice(initialIndex, finalIndex);
 
-            callback(thirtyProducts)
+            callback(thirtyProducts);
+            loader.style.display = 'none';
+            moreButton.style.display = 'block';
 
             //calling the showMore function after the first thirty products loads
             showMore(callback);
             showLess();
+
+            window.localStorage.setItem('apiData', JSON.stringify(data));
         })
         .catch(error => console.log(error))
 }

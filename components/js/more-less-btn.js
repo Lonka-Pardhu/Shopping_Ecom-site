@@ -1,4 +1,3 @@
-const loader = document.querySelector('.spinner');
 const moreButton = document.querySelector('.more-button');
 const lessButton = document.querySelector('.less-button')
 
@@ -12,8 +11,7 @@ function showMore(callback) {
             finalIndex += 30;
             thirtyProducts = data.result.slice(initialIndex, finalIndex);
             callback(thirtyProducts);
-            lessButton.style.display = 'block'
-
+            lessButton.style.display = 'block';
         } else {
             finalIndex = productArrayLength;
             initialIndex = finalIndex - 30;
