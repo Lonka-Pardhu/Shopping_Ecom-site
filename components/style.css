@@ -115,6 +115,9 @@ input:focus{
 div#feed {
     margin: 90px 0 0 260px;
 }
+div#feedTwo {
+    margin: 90px 0 0 260px;
+}
 .product {
     display: inline-block;
     margin: 20px 5px;

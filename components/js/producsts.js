@@ -40,8 +40,9 @@ function productReviews(rating, reviews) {
 }
 
 //product div main function
-function productCard() {
+function productCard(id) {
     const productElement = createElement(undefined, 'product');
+    productElement.id = id;
     const productWrapper = createElement(undefined, 'product-wrapper');
     productElement.appendChild(productWrapper);
 
@@ -53,7 +54,7 @@ function productCard() {
 function createProductCard(productData) {
     productData.forEach(product => {
 
-        const productContainer = productCard();
+        const productContainer = productCard(product.id);
 
         const productImageElement = productImage(product.image);
 
