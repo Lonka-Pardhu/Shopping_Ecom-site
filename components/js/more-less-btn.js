@@ -11,6 +11,7 @@ function showMore(callback) {
             finalIndex += 30;
             thirtyProducts = data.result.slice(initialIndex, finalIndex);
             callback(thirtyProducts);
+            addRouteToProduct()
             lessButton.style.display = 'block';
         } else {
             finalIndex = productArrayLength;
