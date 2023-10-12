@@ -71,4 +71,16 @@ function createProductCard(productData) {
 
     });
 }
-getProducts('https://nextjs-boilerplate-sgunique.vercel.app/api/products', createProductCard)
+function isProductUrl() {
+    return window.location.href.includes('?product=');
+}
+function renderProductDetailsPage() {
+    console.log('product details')
+    document.getElementById('feed').innerHTML = urlLink;
+}
+if (isProductUrl()) {
+    renderProductDetailsPage();
+} else {
+    getProducts('https://nextjs-boilerplate-sgunique.vercel.app/api/products', createProductCard)
+}
+
