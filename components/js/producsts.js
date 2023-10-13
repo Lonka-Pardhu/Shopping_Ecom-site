@@ -74,9 +74,35 @@ function createProductCard(productData) {
 function isProductUrl() {
     return window.location.href.includes('?product=');
 }
+
 function renderProductDetailsPage() {
-    console.log('product details')
-    document.getElementById('feed').innerHTML = urlLink;
+    storedData = JSON.parse(window.localStorage.getItem('apiData'));
+    data = storedData;
+    console.log(data)
+    var productId = JSON.parse(window.localStorage.getItem('productId'))
+    loader.style.display = 'none'
+    let productPageContainer = createElement(undefined, 'productPageContainer')
+
+    let productImageContainer = createElement(undefined, 'productImageContainer');
+    let productPageImage = createElement('img', 'productPageImage');
+    productPageImage.src = data.result[productId].image;
+    productImageContainer.appendChild(productPageImage);
+    productPageContainer.appendChild(productImageContainer);
+
+    let productPageTitleContainer = createElement(undefined, 'productPageTitleContainer');
+    let productPageTitle = createElement('h2', "productPageTitle");
+    productPageTitle.innerHTML = data.result[productId].name;
+    productPageTitleContainer.appendChild(productPageTitle)
+    productPageContainer.appendChild(productPageTitleContainer);
+
+    let productPagePriceContainer = createElement(undefined, 'productPagePriceContainer');
+    let productPagePrice = createElement('h1', "productPagePrice");
+    productPagePrice.innerHTML = data.result[productId].price;
+    productPagePriceContainer.appendChild(productPagePrice)
+    productPageContainer.appendChild(productPagePriceContainer);
+
+
+    document.getElementById('feed').appendChild(productPageContainer)
 }
 if (isProductUrl()) {
     renderProductDetailsPage();

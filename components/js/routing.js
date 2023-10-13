@@ -8,9 +8,10 @@ function addRouteToProduct() {
             let url = '';
             let urlComponents = urlLink.split('?');
             url = urlComponents[0] + route + ele.id;
-            window.localStorage.setItem('product', ele.id)
+            window.localStorage.setItem('productId', ele.id)
             window.location.assign(url)
-
+            productId = urlLink.slice(-1);
+            return productId;
         })
     });
 }
