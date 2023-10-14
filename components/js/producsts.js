@@ -76,37 +76,37 @@ function isProductUrl() {
 }
 
 function renderProductDetailsPage() {
+    document.querySelector('.productPage').style.display = 'block';
     storedData = JSON.parse(window.localStorage.getItem('apiData'));
     data = storedData;
-    console.log(data)
+
     var productId = JSON.parse(window.localStorage.getItem('productId'))
     loader.style.display = 'none'
-    let productPageContainer = createElement(undefined, 'productPageContainer')
 
-    let productImageContainer = createElement(undefined, 'productImageContainer');
-    let productPageImage = createElement('img', 'productPageImage');
-    productPageImage.src = data.result[productId].image;
-    productImageContainer.appendChild(productPageImage);
-    productPageContainer.appendChild(productImageContainer);
+    const pageProductImage = document.getElementById('pageProductImage');
+    pageProductImage.src = data.result[productId].image;
 
-    let productPageTitleContainer = createElement(undefined, 'productPageTitleContainer');
-    let productPageTitle = createElement('h2', "productPageTitle");
-    productPageTitle.innerHTML = data.result[productId].name;
-    productPageTitleContainer.appendChild(productPageTitle)
-    productPageContainer.appendChild(productPageTitleContainer);
+    const pageProductName = document.getElementById('pageProductName');
+    pageProductName.innerHTML = data.result[productId].name;
 
-    let productPagePriceContainer = createElement(undefined, 'productPagePriceContainer');
-    let productPagePrice = createElement('h1', "productPagePrice");
-    productPagePrice.innerHTML = data.result[productId].price;
-    productPagePriceContainer.appendChild(productPagePrice)
-    productPageContainer.appendChild(productPagePriceContainer);
+    const pageProductDescription = document.getElementById('pageProductDescription');
+    pageProductDescription.innerHTML = data.result[productId].description;
 
+    const pageProductPrice = document.getElementById('pageProductPrice');
+    pageProductPrice.innerHTML = data.result[productId].price;
 
-    document.getElementById('feed').appendChild(productPageContainer)
+    const pageProductRating = document.getElementById('pageProductRating');
+    pageProductRating.innerHTML = data.result[productId].rating;
+
+    const pageProductReviews = document.getElementById('pageProductReviews');
+    pageProductReviews.innerHTML = data.result[productId].reviews;
+
 }
 if (isProductUrl()) {
+    document.getElementById('feed').style.display = 'none';
     renderProductDetailsPage();
 } else {
+    document.getElementById('feed').style.display = 'block';
     getProducts('https://nextjs-boilerplate-sgunique.vercel.app/api/products', createProductCard)
 }
 
