@@ -1,5 +1,6 @@
 const moreButton = document.querySelector('.more-button');
 const lessButton = document.querySelector('.less-button')
+const topButton = document.querySelector('.top-button')
 
 lessButton.style.display = 'none'
 moreButton.style.display = 'none'
@@ -36,4 +37,22 @@ function showLess() {
             lessButton.style.display = 'none';
         }
     });
+}
+
+topButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+})
+window.onscroll = function () {
+    scrollFunction()
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        topButton.style.display = "block";
+    } else {
+        topButton.style.display = "none";
+    }
 }

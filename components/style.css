@@ -5,6 +5,26 @@
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
+.top-button{
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    color: #000000;
+    font-weight: 500;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.top-button:hover{
+    background-color: black;
+    color: white;
+}
 .nav-bar{
     display: flex;
     align-items: center;
