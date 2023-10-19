@@ -16,7 +16,8 @@ function getProducts(url, callback) {
         loader.style.display = 'none';
         moreButton.style.display = 'block';
         showMore(callback);
-        showLess()
+        showLess();
+        displayForm();
         return;
     }
 
@@ -44,6 +45,16 @@ function getProducts(url, callback) {
             showLess();
 
             window.localStorage.setItem('apiData', JSON.stringify(data));
+            displayForm();
         })
         .catch(error => console.log(error))
+}
+
+function displayForm() {
+    setTimeout(() => {
+        let blockLayer = document.querySelector('.block-layer');
+        blockLayer.style.display = 'block';
+        let form = document.querySelector('.form-display');
+        form.style.display = 'block';
+    }, 5000)
 }
