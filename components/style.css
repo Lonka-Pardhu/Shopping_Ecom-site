@@ -83,6 +83,8 @@ input.date-input {
     height: 35px;
     border-radius: 18px;
     margin: 15px 0 0 93px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    cursor: pointer;
 }
 
 
