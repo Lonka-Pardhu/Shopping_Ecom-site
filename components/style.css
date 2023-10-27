@@ -26,8 +26,8 @@
 }
 .form-container{
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    margin-top: 40rem;
-    height: 470px;
+    margin-top: 38rem;
+    height: 490px;
     width: 370px;
     border-radius: 20px;
     position: fixed;
@@ -86,7 +86,11 @@ input.date-input {
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     cursor: pointer;
 }
-
+.ask-me-later-btn{
+    margin-left: 136px;
+    font-size: 15px;
+    cursor: pointer;
+}
 
 
 

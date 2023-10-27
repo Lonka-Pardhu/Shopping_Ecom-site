@@ -50,14 +50,19 @@ function getProducts(url, callback) {
         .catch(error => console.log(error))
 }
 
+var blockLayer = document.querySelector('.block-layer');
+var formDisplay = document.querySelector('.form-display');
 function displayForm() {
     setTimeout(() => {
-        let blockLayer = document.querySelector('.block-layer');
         blockLayer.style.display = 'block';
-        let form = document.querySelector('.form-display');
-        form.style.display = 'block';
+        formDisplay.style.display = 'block';
     }, 5000)
 }
+let closeForm = document.querySelector('.ask-me-later-btn')
+closeForm.addEventListener('click', () => {
+    blockLayer.style.display = 'none';
+    formDisplay.style.display = 'none';
+});
 
 // document.getElementById('account-form').addEventListener('submit', function (e) {
 //     e.preventDefault();
@@ -82,7 +87,7 @@ function displayForm() {
 //     blockForm.style.display = 'none';
 // })
 
-const form = document.getElementById('account-form');
-form.addEventListener('submit', function (event) {
-    alert('Form submitted!');
-});
+// const form = document.getElementById('account-form');
+// form.addEventListener('submit', function (event) {
+//     alert('Form submitted!');
+// });
