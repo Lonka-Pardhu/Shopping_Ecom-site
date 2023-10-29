@@ -5,6 +5,11 @@ var finalIndex = 30;
 var productArrayLength;
 var thirtyProducts;
 const loader = document.querySelector('.spinner');
+var blockLayer = document.querySelector('.block-layer');
+var formDisplay = document.querySelector('.form-display');
+var submitForm = document.querySelector('.submit-button')
+var formSubmitted = false;
+var isFormSubmitted = JSON.parse(window.localStorage.getItem('formSubmitted'));
 
 function getProducts(url, callback) {
     storedData = JSON.parse(window.localStorage.getItem('apiData'));
@@ -45,49 +50,30 @@ function getProducts(url, callback) {
             showLess();
 
             window.localStorage.setItem('apiData', JSON.stringify(data));
+            window.localStorage.setItem('formSubmitted', JSON.stringify(formSubmitted))
             displayForm();
         })
         .catch(error => console.log(error))
 }
 
-var blockLayer = document.querySelector('.block-layer');
-var formDisplay = document.querySelector('.form-display');
 function displayForm() {
-    setTimeout(() => {
-        blockLayer.style.display = 'block';
-        formDisplay.style.display = 'block';
-    }, 5000)
+    if (isFormSubmitted) {
+        blockLayer.style.display = 'none';
+        formDisplay.style.display = 'none';
+    } else {
+        setTimeout(() => {
+            blockLayer.style.display = 'block';
+            formDisplay.style.display = 'block';
+        }, 5000)
+    }
 }
+
 let closeForm = document.querySelector('.ask-me-later-btn')
 closeForm.addEventListener('click', () => {
     blockLayer.style.display = 'none';
     formDisplay.style.display = 'none';
 });
 
-// document.getElementById('account-form').addEventListener('submit', function (e) {
-//     e.preventDefault();
-//     const formData = new FormData(this);
-//     fetch('http://localhost:3000/formData', {
-//         method: 'POST',
-//         body: formData,
-//     })
-//         .then(response => response.text())
-//         .then(data => {
-//             console.log(data);
-//             window.location.href = 'http://127.0.0.1:5500/Ecom_site/components/index.html';
-//         })
-//         .catch(error => console.error(error));
-//     // debugger;
-// });
-
-// let submitButton = document.getElementById('submit-button');
-// submitButton.addEventListener('click', () => {
-//     let blockForm = document.querySelector('.form-display');
-//     document.querySelector('.block-layer').style.display = 'none';
-//     blockForm.style.display = 'none';
-// })
-
-// const form = document.getElementById('account-form');
-// form.addEventListener('submit', function (event) {
-//     alert('Form submitted!');
-// });
+submitForm.addEventListener('click', () => {
+    window.localStorage.setItem('formSubmitted', 'true');
+})
