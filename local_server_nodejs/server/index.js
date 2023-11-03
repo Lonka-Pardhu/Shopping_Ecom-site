@@ -28,8 +28,7 @@ app.post('/formData', function (req, res) {
     console.log('Received Form Data:', data);
     console.log('user data/details successfully added to userData.json file')
 
-    // res.redirect('http://127.0.0.1:5500/Ecom_site/components/index.html');
-    res.redirect('https://shopping-website-99.vercel.app/')
+    res.redirect('http://127.0.0.1:5500/components/products.html');
 });
 
 app.listen(3000, () => {

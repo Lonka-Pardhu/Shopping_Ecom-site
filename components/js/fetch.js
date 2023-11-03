@@ -5,11 +5,6 @@ var finalIndex = 30;
 var productArrayLength;
 var thirtyProducts;
 const loader = document.querySelector('.spinner');
-var blockLayer = document.querySelector('.block-layer');
-var formDisplay = document.querySelector('.form-display');
-var submitForm = document.querySelector('.submit-button')
-var formSubmitted = false;
-var isFormSubmitted = JSON.parse(window.localStorage.getItem('formSubmitted'));
 
 function getProducts(url, callback) {
     storedData = JSON.parse(window.localStorage.getItem('apiData'));
@@ -50,30 +45,7 @@ function getProducts(url, callback) {
             showLess();
 
             window.localStorage.setItem('apiData', JSON.stringify(data));
-            window.localStorage.setItem('formSubmitted', JSON.stringify(formSubmitted))
             displayForm();
         })
         .catch(error => console.log(error))
 }
-
-function displayForm() {
-    if (isFormSubmitted) {
-        blockLayer.style.display = 'none';
-        formDisplay.style.display = 'none';
-    } else {
-        setTimeout(() => {
-            blockLayer.style.display = 'block';
-            formDisplay.style.display = 'block';
-        }, 5000)
-    }
-}
-
-let closeForm = document.querySelector('.ask-me-later-btn')
-closeForm.addEventListener('click', () => {
-    blockLayer.style.display = 'none';
-    formDisplay.style.display = 'none';
-});
-
-submitForm.addEventListener('click', () => {
-    window.localStorage.setItem('formSubmitted', 'true');
-})

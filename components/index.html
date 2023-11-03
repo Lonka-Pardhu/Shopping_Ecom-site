@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <script defer src="./js/fetch.js"></script>
-        <script defer src="./js/more-less-btn.js"></script>
-        <script src="./js/utils.js"></script>
-        <script defer src="./js/producsts.js"></script>
-        <script defer src="./js/routing.js"></script>
-    <title>E-com</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-page</title>
+    <link rel="stylesheet" href="login-style.css">
+    <script defer src="./js/forms.js"></script>
 </head>
 <body>
     <main>
@@ -17,7 +13,7 @@
         <div class="form-display">
             <div class="form-main-wrap">
                 <div class="form-container">
-                    <form method="post" action="http://192.168.1.6:3000/formData" id="account-form">
+                    <form method="post" action="http://localhost:3000/formData" id="account-form">
                         <div class="from-inner-wrap">
                             <div class="form-title">
                                 <p>CREATE ACCOUNT</p>
@@ -65,93 +61,6 @@
                 </div>
             </div>
         </div>
-        <div class="spinner-container">
-            <div class="spinner"></div>
-        </div>
-        <button class="top-button">Go to<br> top</button>
-        <section>
-            <div class="nav-bar">
-                <div class="nav-wrap-one">
-                    <div class="logo-container">
-                        <a href="index.html">
-                            <img src="./images/store-logo.png" alt="site-logo" class="logo">
-                        </a>
-                    </div>
-                    <div class="nav-categories">
-                        <h4>MEN</h4>
-                        <h4>WOMEN</h4>
-                        <h4>KIDS</h4>
-                        <h4>HOME & KITCHEN</h4>
-                    </div>
-                </div>
-                <div class="nav-wrap-two">
-                    <div class="search-field">
-                        <input type="text" placeholder="Search for products" class="search-input">
-                        <img src="https://cdn-icons-png.flaticon.com/128/54/54481.png" alt="search-icon" class="search-icon">
-                    </div>
-                    <div class="shop-icons">
-                        <div>
-                            <img src="https://cdn-icons-png.flaticon.com/128/1946/1946429.png" alt="profile-icon" class="profile-icon icon">
-                            <p class="icon-text">Profile</p>
-                        </div>
-                        <div>
-                            <img src="https://cdn-icons-png.flaticon.com/128/2767/2767018.png" alt="wish-list-icon" class="wish-list-icon icon">
-                            <p class="icon-text">Wishlist</p>
-                        </div>
-                        <div>
-                            <img src="https://cdn-icons-png.flaticon.com/128/2662/2662503.png" alt="bag-icon" class="bag-icon icon">
-                            <p class="icon-text">Bag</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="sub-categories">
-                <span>Categories</span>
-                <h5>Books</h5>
-                <h5>Beauty & Skin care</h5>
-                <h5>Electronics</h5>
-                <h5>Jewelry</h5>
-                <h5>Sports/Outdoors</h5>
-                <h5>Gadgets</h5>
-                <h5>Travel</h5>
-                <h5>Toys and games</h5>
-                <h5>Accessories</h5>
-            </div>
-        </section>
-        <section>
-            <div id="feed"></div>
-            <div class="productPage">
-                <div class="productPageContainer">
-                    <div class="productImageContainer">
-                        <img alt="product-image" class="pageProductImage" id="pageProductImage"><!--data-->
-                    </div>
-                    <div class="productDetailsContainer">
-                        <div class="productTitleContainer">
-                            <h2 id="pageProductName"></h2> <!--data-->
-                        </div>
-                        <div class="description">
-                            <i id="pageProductDescription"></i> <!--data-->
-                        </div>
-                        <div class="productPriceContainer">
-                            <h1 id="pageProductPrice"></h2> <!--data-->
-                        </div>
-                        <div class="productRatingContainer">
-                            <h4 id="pageProductRating"></h4> <!--data-->
-                            <img src="https://cdn-icons-png.flaticon.com/128/9715/9715468.png" alt="star-img" >
-                            <span>|</span>
-                            <p id="pageProductReviews"></p> <!--data-->
-                            <p>&nbsp;Ratings</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="more-less-btn-container">
-                <button class="more-button">&#9660;</button>
-                <button class="less-button">&#9650;</button>
-            </div>
-        </section>
     </main>
 </body>
 </html>
