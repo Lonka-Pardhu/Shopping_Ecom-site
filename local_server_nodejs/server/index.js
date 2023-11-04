@@ -21,24 +21,6 @@ app.post('/formData', function (req, res) {
         }
     })
 
-    // fs.readFile('userData.json', 'utf8', function (err, fileData) {
-
-    //     if (err) {
-    //         console.error('Error reading data file:', err);
-    //     }
-    //     let userData = JSON.parse(fileData);
-
-    //     userData.push(data);
-
-    //     fs.writeFile('userData.json', JSON.stringify(userData), (err) => {
-    //         if (err) {
-    //             console.error(err);
-    //         }
-    //     })
-    // })
-
-    // console.log('Received Form Data:', data);
-
     res.redirect('http://127.0.0.1:5500/components/products.html');
 });
 
