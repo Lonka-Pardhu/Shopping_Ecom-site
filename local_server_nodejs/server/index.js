@@ -20,7 +20,7 @@ app.post('/formData', function (req, res) {
             console.log('user data file created successfully..!')
         }
     })
-
+    console.log(data);
     res.redirect('http://127.0.0.1:5500/components/products.html');
 });
 
