@@ -25,11 +25,18 @@
 // submitForm.addEventListener('click', () => {
 //     window.localStorage.setItem('formSubmitted', 'true');
 // })
-// function validateFrom() {
-//     var form = document.getElementById('account-form');
-//     form.addEventListener('submit', (e) => {
-//         e.preventDefault();
-//         window.alert('something went wrong.!')
-//     })
-// }
-// validateFrom();
+var accountForm = document.querySelector('.form-container'); /*fix naming */
+var openLoginForm = document.querySelector('.login-span')
+var loginForm = document.querySelector('.login-form');
+openLoginForm.addEventListener('click', () => {
+    loginForm.style.display = 'block';
+    accountForm.style.display = 'none';
+})
+function validateFrom() {
+    var form = document.getElementById('account-form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        window.alert('something went wrong.!')
+    })
+}
+validateFrom();
