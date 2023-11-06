@@ -11,9 +11,9 @@
     <main>
         <div class="form-display">
             <div class="form-main-wrap">
-                <div class="form-container">
+                <div class="register-form">
                     <form method="post" action="http://localhost:3000/formData" id="account-form">
-                        <div class="from-inner-wrap">
+                        <div class="register-from-inner-wrap">
                             <div class="form-title">
                                 <p>CREATE ACCOUNT</p>
                             </div>
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                     </form>
-                    <span class="form-span">Already have an account? <span class="login-span"><u><b>Log in</b></u></span></span>
+                    <span class="register-form-span">Already have an account? <span class="login-span"><u><b>Log in</b></u></span></span>
                 </div>
                 <div class="login-form">
                     <form action="">
@@ -67,14 +67,17 @@
                             </div>
                             <div>
                                 <label for="email" class="email-label">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Email" class="email-input" required>
+                                <input type="email" id="login-email" name="email" placeholder="Email" class="email-input" required>
                             </div>
                             <div>
                                 <label for="password" class="password-label">Password</label>
-                                <input type="password" id="password" name="password" class="password-input" placeholder="password" required>
+                                <input type="password" id="login-password" name="password" class="password-input" placeholder="password" required>
                             </div>
                             <div>
                                 <button>Log in</button>
+                            </div>
+                            <div>
+                                <span class="form-span-two">Don't have an account? <span class="register-span"><u><b>Sign up</b></u></span></span>
                             </div>
                         </div>
                     </form>

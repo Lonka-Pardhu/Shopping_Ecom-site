@@ -1,6 +1,7 @@
 // var formSubmitted = false;
 // window.localStorage.setItem('formSubmitted', JSON.stringify(formSubmitted))
 
+
 // var formDisplay = document.querySelector('.form-display');
 // var submitForm = document.querySelector('.submit-button')
 // var isFormSubmitted = JSON.parse(window.localStorage.getItem('formSubmitted'));
@@ -25,13 +26,22 @@
 // submitForm.addEventListener('click', () => {
 //     window.localStorage.setItem('formSubmitted', 'true');
 // })
-var accountForm = document.querySelector('.form-container'); /*fix naming */
+var accountForm = document.querySelector('.register-form');
 var openLoginForm = document.querySelector('.login-span')
 var loginForm = document.querySelector('.login-form');
+var openCreateAccForm = document.querySelector('.register-span')
+
+
 openLoginForm.addEventListener('click', () => {
     loginForm.style.display = 'block';
     accountForm.style.display = 'none';
 })
+
+openCreateAccForm.addEventListener('click', () => {
+    accountForm.style.display = 'block';
+    loginForm.style.display = 'none';
+})
+
 function validateFrom() {
     var form = document.getElementById('account-form');
     form.addEventListener('submit', (e) => {

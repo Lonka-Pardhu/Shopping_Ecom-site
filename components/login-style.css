@@ -22,7 +22,7 @@ body{
     transform: translate(-50%, -50%);
     
 }
-.form-container{
+.register-form{
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     height: 490px;
     width: 370px;
@@ -31,10 +31,11 @@ body{
     background: white;
     /* display: none; */
 }
-.from-inner-wrap {
+.register-from-inner-wrap {
+    padding-top: 0.5px;
     margin-left: 40px;
 }
-.from-inner-wrap > div{
+.register-from-inner-wrap > div{
     margin-bottom: 15px;
 }
 .form-title{
@@ -83,7 +84,7 @@ input.date-input {
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     cursor: pointer;
 }
-.form-span{
+.register-form-span{
     margin-left: 58px;
     font-size: 15px;
 }
@@ -93,7 +94,7 @@ input.date-input {
 }
 /* login form styles */
 .login-form{
-    height: 290px;
+    height: 315px;
     width: 370px;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
@@ -122,4 +123,7 @@ input.date-input {
     border-radius: 50px;
     cursor: pointer;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.register-span{
+    cursor: pointer;
 }
