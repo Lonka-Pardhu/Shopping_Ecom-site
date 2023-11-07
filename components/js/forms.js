@@ -42,11 +42,13 @@ openCreateAccForm.addEventListener('click', () => {
     loginForm.style.display = 'none';
 })
 
-function validateFrom() {
-    var form = document.getElementById('account-form');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        window.alert('something went wrong.!')
-    })
+function validateForm() {
+    // let firstName = document.getElementById('first-name');
+    // let lastName = document.getElementById('last-name');
+
+
+    // console.log('stopping form from submission')
+    // return false;
+    return true;
 }
-validateFrom();
+// validateFrom();
