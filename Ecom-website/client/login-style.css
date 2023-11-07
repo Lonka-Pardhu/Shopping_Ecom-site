@@ -127,3 +127,7 @@ input.date-input {
 .register-span{
     cursor: pointer;
 }
+.response{
+    z-index: 100;
+    position: absolute;
+}

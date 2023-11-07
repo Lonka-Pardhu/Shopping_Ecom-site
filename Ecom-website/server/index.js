@@ -5,6 +5,7 @@ const fs = require('fs');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('client'))
 
 app.post('/register', function (req, res) {
 
@@ -21,10 +22,14 @@ app.post('/register', function (req, res) {
         }
     })
     console.log(data);
-    res.redirect('http://127.0.0.1:5500/components/products.html');
+    // res.redirect('/products.html');
+    res.send({
+        status: 200,
+        message: "Account created successfully..!"
+    })
 });
 
-app.post('/login', function (req, res) {
+app.get('/login', function (req, res) {
     console.log('LOGIN SUCCESSFUL')
 })
 

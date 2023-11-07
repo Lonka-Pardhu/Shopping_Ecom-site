@@ -31,6 +31,7 @@ var openLoginForm = document.querySelector('.login-span')
 var loginForm = document.querySelector('.login-form');
 var openCreateAccForm = document.querySelector('.register-span')
 
+var popup = document.getElementById('response');
 
 openLoginForm.addEventListener('click', () => {
     loginForm.style.display = 'block';
@@ -42,13 +43,18 @@ openCreateAccForm.addEventListener('click', () => {
     loginForm.style.display = 'none';
 })
 
-function validateForm() {
+function validateForm(event) {
     // let firstName = document.getElementById('first-name');
     // let lastName = document.getElementById('last-name');
-
-
+    event.preventDefault();
     // console.log('stopping form from submission')
-    // return false;
-    return true;
+    debugger;
+    fetch('/register')
+        .then(response => { response.json() })
+        .then(data => {
+            popup.innerHTML = data;
+        })
+        .catch(err => console.log(err))
+    // return true;
 }
 // validateFrom();
