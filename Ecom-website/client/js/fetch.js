@@ -17,7 +17,6 @@ function getProducts(url, callback) {
         moreButton.style.display = 'block';
         showMore(callback);
         showLess();
-        displayForm();
         return;
     }
 
@@ -45,7 +44,6 @@ function getProducts(url, callback) {
             showLess();
 
             window.localStorage.setItem('apiData', JSON.stringify(data));
-            displayForm();
         })
         .catch(error => console.log(error))
 }

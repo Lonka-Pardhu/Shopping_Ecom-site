@@ -8,20 +8,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('client'))
 
 app.post('/register', function (req, res) {
+    console.log(req.body);
 
-    const data = req.body;
-    let stringData = JSON.stringify(data);
-    var fileName = `${data.first_name}-${data.last_name}.json`
+    // const data = req.body;
+    // let stringData = JSON.stringify(data);
+    // var fileName = `${email}.json`
 
 
-    fs.appendFile(fileName, stringData, function (err) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('user data file created successfully..!')
-        }
-    })
-    console.log(data);
+    // fs.appendFile(fileName, stringData, function (err) {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         console.log('user data file created successfully..!')
+    //     }
+    // })
+    // console.log(data);
     // res.redirect('/products.html');
     res.send({
         status: 200,
