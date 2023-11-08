@@ -5,7 +5,7 @@ const fs = require('fs');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('client'))
+app.use(express.static('components'))
 
 app.post('/register', function (req, res) {
     console.log(req.body);
