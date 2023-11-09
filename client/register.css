@@ -15,7 +15,7 @@ body{
 .form-display{
     height: 100vh;
 }
-.form-main-wrap{
+.register-form-wrapper{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -27,7 +27,7 @@ body{
     height: 490px;
     width: 370px;
     border-radius: 20px;
-    z-index: 9;
+    z-index: 2;
     background: white;
     /* display: none; */
 }
@@ -92,42 +92,8 @@ input.date-input {
     cursor: pointer;
     font-size: 16px;
 }
-/* login form styles */
-.login-form{
-    height: 315px;
-    width: 370px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 20px;
-    display: none;
-}
-.login-form-inner-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 30px;  
-}
-.login-form-inner-wrap > div{
-    margin-bottom: 15px;
-}
-.login-form-title{
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-}
-.login-form-inner-wrap>div>button{
-    border: none;
-    height: 35px;
-    width:  70px;
-    color: white;
-    background-color: black;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-}
-.register-span{
-    cursor: pointer;
-}
-.response{
+
+/* .response{
     z-index: 100;
     position: absolute;
-}
+} */
