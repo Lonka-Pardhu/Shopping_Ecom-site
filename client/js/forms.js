@@ -25,7 +25,6 @@ formEle.addEventListener('submit', (e) => {
         .catch(err => console.log(err))
 })
 
-
 // *? take control of form
 // *! prevent user form entering product page directly , check user is authenticate, or redirect to login page directly
 // ** use FormData object to append data to form data

@@ -6,7 +6,7 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background-image: url(./images/background2.png);
+    background-image: url(./media/background2.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -43,7 +43,7 @@ label {
     font-size: 13px;
     font-weight: 500;
 }
-input{
+input{  
     width: 290px;
     height: 45px;
     border-radius: 50px;

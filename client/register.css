@@ -6,9 +6,10 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background-image: url(./images/background.png);
+    background-image: url(./media/background.png);
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 }
 
 /* form styles */
@@ -20,7 +21,6 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
 }
 .register-form{
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
@@ -92,8 +92,22 @@ input.date-input {
     cursor: pointer;
     font-size: 16px;
 }
-
-/* .response{
+.response-message-container{
     z-index: 100;
     position: absolute;
-} */
+    height: 280px;
+    width: 300px;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#tick-mark-gif{
+    animation-iteration-count: 1;
+}
