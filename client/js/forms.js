@@ -13,7 +13,9 @@ formEle.addEventListener('submit', (e) => {
         .then(res => res.json())
         .then(data => {
             if (data.status === 200) {
-                document.getElementById('response').innerHTML = data.message;
+                document.getElementById('response-message').innerHTML = data.message;
+                document.querySelector(".block-layer").style.display = 'block';
+                document.querySelector(".response-message-container").style.visibility = 'visible';
                 setTimeout(() => {
                     window.location.href = '/products.html'
                 }, 3000)

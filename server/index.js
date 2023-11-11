@@ -25,7 +25,7 @@ app.post('/register', function (req, res) {
     // res.redirect('/products.html');
     res.send({
         status: 200,
-        message: "Account created successfully..!"
+        message: "Registration Successful"
     })
 });
 
