@@ -17,7 +17,7 @@ formEle.addEventListener('submit', (e) => {
                 document.querySelector(".block-layer").style.display = 'block';
                 document.querySelector(".response-message-container").style.visibility = 'visible';
                 setTimeout(() => {
-                    window.location.href = '/products.html'
+                    window.location.href = '/login.html'
                 }, 3000)
             }
             else {
@@ -31,42 +31,7 @@ formEle.addEventListener('submit', (e) => {
 // *! prevent user form entering product page directly , check user is authenticate, or redirect to login page directly
 // ** use FormData object to append data to form data
 // ** make files by email in server
-// ** use cookie to check user login and lcear cookie after closing borwser
+// ** use cookie to check user login and clear cookie after closing browser
 // ** user check login through saving user data in cookie
 // ** initial login page
 //  TODO:  form
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var accountForm = document.querySelector('.register-form');
-// var openLoginForm = document.querySelector('.login-span')
-// var loginForm = document.querySelector('.login-form');
-// var openCreateAccForm = document.querySelector('.register-span')
-
-// var popup = document.getElementById('response');
-
-// openLoginForm.addEventListener('click', () => {
-//     loginForm.style.display = 'block';
-//     accountForm.style.display = 'none';
-// })
-
-// openCreateAccForm.addEventListener('click', () => {
-//     accountForm.style.display = 'block';
-//     loginForm.style.display = 'none';
-// })
