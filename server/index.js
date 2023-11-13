@@ -14,18 +14,25 @@ app.post('/register', function (req, res) {
     let stringData = JSON.stringify(data);
     var fileName = `${data.email}.json`
 
-
-    fs.appendFile(fileName, stringData, function (err) {
+    fs.access(fileName, (err) => {
         if (err) {
-            console.log(err);
+            fs.appendFile(fileName, stringData, function (err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.send({
+                        status: 200,
+                        message: "Registration Successful"
+                    })
+                    console.log('user data file created successfully..!')
+                }
+            })
         } else {
-            console.log('user data file created successfully..!')
+            res.send({
+                status: 409,
+                message: "Account already exists."
+            })
         }
-    })
-    // res.redirect('/products.html');
-    res.send({
-        status: 200,
-        message: "Registration Successful"
     })
 });
 

@@ -12,7 +12,7 @@ formEle.addEventListener('submit', (e) => {
     })
         .then(res => res.json())
         .then(data => {
-            if (data.status === 200) {
+            if (data.status === 200 || data.status === 409) {
                 document.getElementById('response-message').innerHTML = data.message;
                 document.querySelector(".block-layer").style.display = 'block';
                 document.querySelector(".response-message-container").style.visibility = 'visible';
