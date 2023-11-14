@@ -36,6 +36,23 @@ body{
     border: 1px solid black;
     visibility: hidden;
 }
+.response-message-container-two{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 10;
+    position: absolute;
+    height: 200px;
+    width: 300px;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    visibility: hidden;
+}
 /* form styles */
 .form-display{
     height: 100vh;

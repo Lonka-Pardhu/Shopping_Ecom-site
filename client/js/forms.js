@@ -12,7 +12,7 @@ formEle.addEventListener('submit', (e) => {
     })
         .then(res => res.json())
         .then(data => {
-            if (data.status === 200 || data.status === 409) {
+            if (data.status === 200) {
                 document.getElementById('response-message').innerHTML = data.message;
                 document.querySelector(".block-layer").style.display = 'block';
                 document.querySelector(".response-message-container").style.visibility = 'visible';
@@ -20,8 +20,15 @@ formEle.addEventListener('submit', (e) => {
                     window.location.href = '/login.html'
                 }, 3000)
             }
-            else {
-                console.log('something went wrong')
+            else if (data.status === 409) {
+                document.getElementById('response-message-two').innerHTML = data.message;
+                document.querySelector(".block-layer").style.display = 'block';
+                document.querySelector(".response-message-container-two").style.visibility = 'visible';
+                setTimeout(() => {
+                    window.location.href = '/login.html'
+                }, 3000)
+            } else {
+                console.log("something went wrong")
             }
         })
         .catch(err => console.log(err))
