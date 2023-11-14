@@ -15,7 +15,7 @@ app.post('/register', function (req, res) {
     var fileName = `${data.email}.json`
 
     fs.access(fileName, (err) => {
-        if (err) {
+        if (err) { // if the file is not readable the following statements executes //
             fs.appendFile(fileName, stringData, function (err) {
                 if (err) {
                     console.log(err);
@@ -27,7 +27,7 @@ app.post('/register', function (req, res) {
                     console.log('user data file created successfully..!')
                 }
             })
-        } else {
+        } else { // if the file is readable the following statements executes //
             res.send({
                 status: 409,
                 message: "Account already exists."
