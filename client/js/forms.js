@@ -1,3 +1,6 @@
+let openLoginForm = document.querySelector('.login-span');
+let timerSpanOne = document.querySelector('.counter-display-one');
+let timerSpanTwo = document.querySelector('.counter-display-two')
 const formEle = document.getElementById('account-form');
 const passwordValidation = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
@@ -42,23 +45,33 @@ formEle.addEventListener('submit', (e) => {
                     document.getElementById('response-message').innerHTML = data.message;
                     document.querySelector(".block-layer").style.display = 'block';
                     document.querySelector(".response-message-container").style.visibility = 'visible';
-                    setTimeout(() => {
-                        window.location.href = '/login.html'
-                    }, 3000)
+                    countdownTimer(timerSpanOne);
                 }
                 else if (data.status === 409) {
                     document.getElementById('response-message-two').innerHTML = data.message;
                     document.querySelector(".block-layer").style.display = 'block';
                     document.querySelector(".response-message-container-two").style.visibility = 'visible';
-                    setTimeout(() => {
-                        window.location.href = '/login.html'
-                    }, 3000)
+                    countdownTimer(timerSpanTwo);
                 } else {
                     console.log("something went wrong")
                 }
             })
             .catch(err => console.log(err))
     }
+})
+function countdownTimer(displayElement) {
+    let timerSeconds = 3;
+    setInterval(() => {
+        displayElement.innerHTML = timerSeconds;
+        timerSeconds--;
+        if (timerSeconds <= -1) {
+            clearInterval();
+            window.location.href = '/login.html'
+        }
+    }, 1000);
+}
+openLoginForm.addEventListener('click', () => {
+    window.location.href = '/login.html'
 })
 
 // *! prevent user form entering product page directly , check user is authenticate, or redirect to login page directly
