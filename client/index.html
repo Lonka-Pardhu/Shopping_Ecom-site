@@ -3,74 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="register.css">
-    <script defer src="./js/registerForm.js"></script>
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <script defer src="./js/loginForm.js"></script>
 </head>
 <body>
-    <main>
-        <div class="block-layer"></div>
-        <div class="response-message-container">
-            <h3 id="response-message"></h3>
-            <div class="tick-gif-container">
-                <img src="./media/tick-mark.gif" id="tick-mark-gif" alt="gif">
-            </div>
-            <h4>Please login to your account in <span class="counter-display-one"></span></h4>
-        </div>
-        <div class="response-message-container-two">
-            <h3 id="response-message-two"></h3>
-            <br>
-            <h4>Please login to your account in <span class="counter-display-two"></span></h4>
-        </div>
-        <div class="register-form-wrapper">
-            <div class="register-form">
-                <form id="account-form" action='/register' method="post">
-                    <div class="register-from-inner-wrap">
-                        <div class="form-title">
-                            <p>CREATE ACCOUNT</p>
-                        </div>
-                        <div>
-                            <label for="first-name" class="fname-label">First Name</label>
-                            <input type="text" id="first-name" name="first_name" placeholder="First Name" class="fname-input">
-                        </div>
-                        <div>
-                            <label for="last-name" class="lname-label">Last Name</label>
-                            <input type="text" id="last-name" name="last_name" placeholder="Last Name" class="lname-input">
-                        </div>
-                        <div>
-                            <label for="email" class="email-label">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Email" class="email-input">
-                        </div>
-                        <div class="date-input-container">
-                            <label for="date">Date of Birth</label>
-                            <input type="date" id="date" name="date_of_birth" class="date-input" max="2023-12-31">
-                        </div>
-                        <div class="gender-input-container">
-                            <div>
-                                <input type="radio" id="male" name="gender" value="male">
-                                <label for="male">Male</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="female" name="gender" value="female">
-                                <label for="female">Female</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="other" name="gender" value="other">
-                                <label for="other">Other</label>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="password" class="password-label">Password</label>
-                            <input type="password" id="password" name="password" class="password-input" placeholder="password">
-                        </div>
-                        <div>
-                            <input type="submit" id="submit-button" class="submit-button">
-                        </div>
+    <div class="login-form-wrapper">
+        <div class="login-form">
+            <form id="form-login" action='/login' method="post">
+                <div class="login-form-inner-wrap">
+                    <div class="login-form-title">
+                        <p>Login to your</p>
+                        <p>account</p>
                     </div>
-                </form>
-                <span class="register-form-span">Already have an account? <span class="login-span"><u><b>Log in</b></u></span></span>
-            </div>
+                    <div>
+                        <label for="email" class="email-label">Email</label>
+                        <input type="email" id="login-email" name="email" placeholder="Email" class="login-email-input">
+                    </div>
+                    <div>
+                        <label for="password" class="password-label">Password</label>
+                        <input type="password" id="login-password" name="password" class="login-password-input" placeholder="password">
+                    </div>
+                    <div>
+                        <button>Log in</button>
+                    </div>
+                    <div>
+                        <span class="form-span-two">Don't have an account? <span class="register-span"><u><b>Sign up</b></u></span></span>
+                    </div>
+                </div>
+            </form>
         </div>
-    </main>
+    </div>
+</main>
 </body>
 </html>

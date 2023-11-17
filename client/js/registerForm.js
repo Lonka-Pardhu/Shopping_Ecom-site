@@ -1,10 +1,10 @@
 let openLoginForm = document.querySelector('.login-span');
 let timerSpanOne = document.querySelector('.counter-display-one');
 let timerSpanTwo = document.querySelector('.counter-display-two')
-const formEle = document.getElementById('account-form');
+const registerForm = document.getElementById('account-form');
 const passwordValidation = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-formEle.addEventListener('submit', (e) => {
+registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     let userFirstName = document.querySelector('.fname-input').value;
@@ -32,7 +32,7 @@ formEle.addEventListener('submit', (e) => {
         window.alert('Password must be at least 8 characters long and include atleast one letter and one number.')
     }
     else {
-        const formData = new FormData(formEle);
+        const formData = new FormData(registerForm);
         const details = new URLSearchParams(formData);
 
         fetch('/register', {
@@ -66,12 +66,12 @@ function countdownTimer(displayElement) {
         timerSeconds--;
         if (timerSeconds <= -1) {
             clearInterval();
-            window.location.href = '/login.html'
+            window.location.href = '/index.html'
         }
     }, 1000);
 }
 openLoginForm.addEventListener('click', () => {
-    window.location.href = '/login.html'
+    window.location.href = '/index.html'
 })
 
 // *! prevent user form entering product page directly , check user is authenticate, or redirect to login page directly

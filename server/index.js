@@ -36,8 +36,43 @@ app.post('/register', function (req, res) {
     })
 });
 
-app.get('/login', function (req, res) {
-    console.log('LOGIN SUCCESSFUL')
+app.post('/login', function (req, res) {
+    console.log(req.body);
+
+    const userLogin = req.body;
+    var loginPassword = userLogin.password;
+    var userAccount = `${userLogin.email}.json`;
+
+    fs.access(userAccount, (err) => {
+        // if the file is not readable it means user does not has an account//
+        if (err) {
+            res.send({
+                status: 401,
+                message: 'Account does not exist, please register and try again.'
+            })
+        } else { // if the file is the readable it means user has an account >> proceeds to check if he/she has entered correct password//
+            fs.readFile(userAccount, 'utf8', (err, userData) => {
+                if (err) {
+                    console.log('Error reading file', err);
+                } else {
+                    const userCredentials = JSON.parse(userData);
+                    const storedPassword = userCredentials.password;
+                    if (loginPassword === storedPassword) {
+                        res.send({
+                            status: 200,
+                            message: 'Login Successful.'
+                        })
+                    } else {
+                        res.send({
+                            status: 401,
+                            message: 'Incorrect password'
+                        })
+                    }
+                }
+            })
+
+        }
+    })
 })
 
 app.listen(3000, () => {
