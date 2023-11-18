@@ -43,13 +43,13 @@ registerForm.addEventListener('submit', (e) => {
             .then(data => {
                 if (data.status === 200) {
                     document.getElementById('response-message').innerHTML = data.message;
-                    document.querySelector(".block-layer").style.display = 'block';
+                    document.querySelector(".register-response-layer").style.display = 'block';
                     document.querySelector(".response-message-container").style.visibility = 'visible';
                     countdownTimer(timerSpanOne);
                 }
                 else if (data.status === 409) {
                     document.getElementById('response-message-two').innerHTML = data.message;
-                    document.querySelector(".block-layer").style.display = 'block';
+                    document.querySelector(".register-response-layer").style.display = 'block';
                     document.querySelector(".response-message-container-two").style.visibility = 'visible';
                     countdownTimer(timerSpanTwo);
                 } else {

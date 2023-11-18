@@ -8,6 +8,18 @@
     <script defer src="./js/loginForm.js"></script>
 </head>
 <body>
+    <div class="login-response-layer"></div>
+        <div class="login-response-message-container">
+            <div class="tick-gif-container">
+                <img src="./media/tick-mark.gif" id="tick-mark-gif" alt="gif">
+            </div>
+            <h3 id="login-response-message"></h3>
+        </div>
+        <div class="login-response-message-container-two">
+            <h3 id="login-response-message-two"></h3>
+            <br>
+            <h4>Please login to your account in <span class="counter-display-two"></span></h4>
+        </div>
     <div class="login-form-wrapper">
         <div class="login-form">
             <form id="form-login" action='/login' method="post">
