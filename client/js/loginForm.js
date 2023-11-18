@@ -24,14 +24,19 @@ loginForm.addEventListener('submit', (e) => {
             .then(data => {
                 if (data.status === 200) {
                     document.querySelector('.login-response-layer').style.display = 'block';
-                    document.querySelector('.login-response-message-container').style.visibility = 'visible';
-                    document.getElementById('login-response-message').innerHTML = data.message;
+                    document.querySelector('.login-response-one').style.display = 'flex';
+                    document.getElementById('login-response-message-one').innerHTML = data.message;
                 }
                 else if (data.status === 401) {
                     document.querySelector('.login-response-layer').style.display = 'block';
-                    document.querySelector('.login-response-message-container-two').style.visibility = 'visible';
+                    document.querySelector('.login-response-two').style.display = 'flex';
                     document.getElementById('login-response-message-two').innerHTML = data.message;
-                } else {
+                } else if (data.status === 404) {
+                    document.querySelector('.login-response-layer').style.display = 'block';
+                    document.querySelector('.login-response-three').style.display = 'flex';
+                    document.getElementById('login-response-message-three').innerHTML = data.message;
+                }
+                else {
                     console.log("something went wrong")
                 }
             })

@@ -20,42 +20,79 @@ body{
     display: none;
 }
 
-.login-response-message-container{
+.login-responses-wrapper{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     z-index: 10;
     position: absolute;
-    height: 280px;
-    width: 300px;
-    border-radius: 20px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    border: 1px solid black;
-    visibility: hidden;
+    /* visibility: hidden; */
 }
-
-.login-response-message-container-two{
-    display: flex;
-    align-items: center;
+.login-response-one{
+    height: 250px;
+    width: 280px;
+    background-color: white;
+    /* display: flex; */
     justify-content: center;
     flex-direction: column;
-    z-index: 10;
-    position: absolute;
-    height: 200px;
-    width: 300px;
+    align-items: center;
     border-radius: 20px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
     border: 1px solid black;
-    visibility: hidden;
+    /* visibility: hidden; */
+    display: none;
 }
-
+.login-response-two{
+    height: 215px;
+    width: 300px;
+    padding: 10px;
+    background-color: white;
+    /* display: flex; */
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid black;
+    text-align: center;
+    /* visibility: hidden; */
+    display: none;
+}
+.login-response-two > button {
+    height: 30px;
+    border: none;
+    width: 50px;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.login-response-three{
+    height: 215px;
+    width: 300px;
+    padding: 10px;
+    background-color: white;
+    /* display: flex; */
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid black;
+    text-align: center;
+    /* visibility: hidden; */
+    display: none;
+}
+.login-response-three > button{
+    height: 30px;
+    border: none;
+    width: 80px;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .login-form-wrapper{
     position: absolute;
     top: 50%;

@@ -47,7 +47,7 @@ app.post('/login', function (req, res) {
         // if the file is not readable it means user does not has an account//
         if (err) {
             res.send({
-                status: 401,
+                status: 404,
                 message: 'Account does not exist, please register and try again.'
             })
         } else { // if the file is the readable it means user has an account >> proceeds to check if he/she has entered correct password//
@@ -65,7 +65,7 @@ app.post('/login', function (req, res) {
                     } else {
                         res.send({
                             status: 401,
-                            message: 'Incorrect password'
+                            message: 'Incorrect password.!'
                         })
                     }
                 }
