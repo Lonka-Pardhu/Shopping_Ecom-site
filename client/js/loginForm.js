@@ -1,4 +1,6 @@
 let openRegisterForm = document.querySelector('.register-span');
+let registerRedirectBtn = document.querySelector('.register-redirect');
+let closeResponseBtn = document.querySelector('.close-response');
 const loginForm = document.getElementById('form-login');
 
 loginForm.addEventListener('submit', (e) => {
@@ -26,6 +28,9 @@ loginForm.addEventListener('submit', (e) => {
                     document.querySelector('.login-response-layer').style.display = 'block';
                     document.querySelector('.login-response-one').style.display = 'flex';
                     document.getElementById('login-response-message-one').innerHTML = data.message;
+                    setTimeout(() => {
+                        window.location.href = '/products.html';
+                    }, 2000)
                 }
                 else if (data.status === 401) {
                     document.querySelector('.login-response-layer').style.display = 'block';
@@ -45,5 +50,14 @@ loginForm.addEventListener('submit', (e) => {
 })
 
 openRegisterForm.addEventListener('click', () => {
-    window.location.href = '/register.html'
+    window.location.href = '/register.html';
+})
+
+registerRedirectBtn.addEventListener('click', () => {
+    window.location.href = '/register.html';
+})
+
+closeResponseBtn.addEventListener('click', () => {
+    document.querySelector('.login-response-layer').style.display = 'none';
+    document.querySelector('.login-response-two').style.display = 'none';
 })
