@@ -42,15 +42,15 @@ registerForm.addEventListener('submit', (e) => {
             .then(res => res.json())
             .then(data => {
                 if (data.status === 200) {
-                    document.getElementById('response-message').innerHTML = data.message;
                     document.querySelector(".register-response-layer").style.display = 'block';
-                    document.querySelector(".response-message-container").style.visibility = 'visible';
+                    document.querySelector(".register-response-one").style.display = 'flex';
+                    document.getElementById('register-response-message-one').innerHTML = data.message;
                     countdownTimer(timerSpanOne);
                 }
                 else if (data.status === 409) {
-                    document.getElementById('response-message-two').innerHTML = data.message;
                     document.querySelector(".register-response-layer").style.display = 'block';
-                    document.querySelector(".response-message-container-two").style.visibility = 'visible';
+                    document.querySelector(".register-response-two").style.display = 'flex';
+                    document.getElementById('register-response-message-two').innerHTML = data.message;
                     countdownTimer(timerSpanTwo);
                 } else {
                     console.log("something went wrong")

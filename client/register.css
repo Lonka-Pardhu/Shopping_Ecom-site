@@ -11,7 +11,7 @@ body{
     background-size: cover;
     height: 100vh;
 }
-.block-layer{
+.register-response-layer{
     background: black;
     height: 100vh;
     opacity: 0.7;
@@ -19,39 +19,43 @@ body{
     z-index: 1;
     display: none;
 }
-.response-message-container{
+.register-responses-wrapper{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     z-index: 10;
     position: absolute;
-    height: 280px;
-    width: 300px;
-    border-radius: 20px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    border: 1px solid black;
-    visibility: hidden;
+    /* visibility: hidden; */
 }
-.response-message-container-two{
-    display: flex;
-    align-items: center;
+.register-response-one{
+    height: 250px;
+    width: 300px;
+    background-color: white;
+    /* display: flex; */
     justify-content: center;
     flex-direction: column;
-    z-index: 10;
-    position: absolute;
-    height: 200px;
-    width: 300px;
+    align-items: center;
     border-radius: 20px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
     border: 1px solid black;
-    visibility: hidden;
+    /* visibility: hidden; */
+    display: none;
+}
+.register-response-two{
+    height: 250px;
+    width: 300px;
+    background-color: white;
+    /* display: flex; */
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid black;
+    /* visibility: hidden; */
+    display: none;
 }
 /* form styles */
 .form-display{
