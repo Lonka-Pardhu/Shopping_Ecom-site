@@ -1,6 +1,7 @@
-let openLoginForm = document.querySelector('.login-span');
+let openLoginFormOne = document.querySelector('.login-span');
+let openLoginFormTwo = document.querySelector('.login-page-button')
+let closeResponseMessage = document.querySelector('.close-response-message')
 let timerSpanOne = document.querySelector('.counter-display-one');
-let timerSpanTwo = document.querySelector('.counter-display-two')
 const registerForm = document.getElementById('account-form');
 const passwordValidation = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
@@ -51,7 +52,6 @@ registerForm.addEventListener('submit', (e) => {
                     document.querySelector(".register-response-layer").style.display = 'block';
                     document.querySelector(".register-response-two").style.display = 'flex';
                     document.getElementById('register-response-message-two').innerHTML = data.message;
-                    countdownTimer(timerSpanTwo);
                 } else {
                     console.log("something went wrong")
                 }
@@ -70,10 +70,18 @@ function countdownTimer(displayElement) {
         }
     }, 1000);
 }
-openLoginForm.addEventListener('click', () => {
+openLoginFormOne.addEventListener('click', () => {
     window.location.href = '/index.html'
 })
 
+openLoginFormTwo.addEventListener('click', () => {
+    window.location.href = '/index.html'
+})
+
+closeResponseMessage.addEventListener('click', () => {
+    document.querySelector(".register-response-layer").style.display = 'none';
+    document.querySelector(".register-response-two").style.display = 'none';
+})
 // *! prevent user form entering product page directly , check user is authenticate, or redirect to login page directly
 // ** use cookie to check user login and clear cookie after closing browser
 // ** user check login through saving user data in cookie

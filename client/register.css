@@ -14,7 +14,7 @@ body{
 .register-response-layer{
     background: black;
     height: 100vh;
-    opacity: 0.7;
+    opacity: 0.8;
     position: relative;
     z-index: 1;
     display: none;
@@ -46,7 +46,9 @@ body{
 }
 .register-response-two{
     height: 250px;
-    width: 300px;
+    width: 350px;
+    padding: 10px;
+    text-align: center;
     background-color: white;
     /* display: flex; */
     justify-content: center;
@@ -56,6 +58,14 @@ body{
     border: 1px solid black;
     /* visibility: hidden; */
     display: none;
+}
+.register-response-two> button{
+    padding: 5px;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
 }
 /* form styles */
 .form-display{

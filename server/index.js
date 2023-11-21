@@ -30,7 +30,7 @@ app.post('/register', function (req, res) {
         } else { // if the file is readable the following statements executes //
             res.send({
                 status: 409,
-                message: "Account already exists."
+                message: "An account with this email address already exists, please login to your account or use a different email address."
             })
         }
     })
