@@ -3,8 +3,23 @@ let openLoginFormTwo = document.querySelector('.login-page-button')
 let closeResponseMessage = document.querySelector('.close-response-message')
 let timerSpanOne = document.querySelector('.counter-display-one');
 const registerForm = document.getElementById('account-form');
-const passwordValidation = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+const passwordValidationRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+const emailValidationRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})$/;
+let emailInput = document.querySelector('.email-input');
+let emailValidationErr = document.querySelector('.email-validation-err')
 
+let timeout;
+emailInput.addEventListener('input', () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+        var enteredEmail = emailInput.value.trim();
+        if (emailValidationRegex.test(enteredEmail) || emailInput.value === '') {
+            emailValidationErr.style.display = 'none';
+        } else {
+            emailValidationErr.style.display = 'block';
+        }
+    }, 1000);
+})
 registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -15,15 +30,15 @@ registerForm.addEventListener('submit', (e) => {
     let userPassword = document.querySelector('.password-input').value;
 
     function validatePassword(password) {
-        return passwordValidation.test(password);
+        return passwordValidationRegex.test(password);
     }
     if (userFirstName === '') {
         window.alert('Please enter First Name');
     } else if (userLastName === '') {
         window.alert('Please enter your Last Name')
-    } else if (userEmail === '') {
+    } /*else if (userEmail === '') {
         window.alert('Please enter your Email.')
-    } else if (userDob === '') {
+    } */else if (userDob === '') {
         window.alert('Please enter your Date of birth.')
     } else if (!document.querySelector('input[name="gender"]:checked')) {
         window.alert('Please select your Gender.')

@@ -44,6 +44,11 @@
                         <div>
                             <label for="email" class="email-label">Email</label>
                             <input type="email" id="email" name="email" placeholder="Email" class="email-input">
+                            <p class="email-validation-err">Please enter a valid email address (Ex: user@example.com)</p>
+                        </div>
+                        <div>
+                            <label for="password" class="password-label">Password</label>
+                            <input type="password" id="password" name="password" class="password-input" placeholder="password">
                         </div>
                         <div class="date-input-container">
                             <label for="date">Date of Birth</label>
@@ -64,15 +69,13 @@
                             </div>
                         </div>
                         <div>
-                            <label for="password" class="password-label">Password</label>
-                            <input type="password" id="password" name="password" class="password-input" placeholder="password">
-                        </div>
-                        <div>
                             <input type="submit" id="submit-button" class="submit-button">
                         </div>
                     </div>
                 </form>
-                <span class="register-form-span">Already have an account? <span class="login-span"><u><b>Log in</b></u></span></span>
+                <div class="register-form-footer">
+                    <span class="register-form-span">Already have an account? <span class="login-span"><u><b>Log in</b></u></span></span>
+                </div>
             </div>
         </div>
     </main>

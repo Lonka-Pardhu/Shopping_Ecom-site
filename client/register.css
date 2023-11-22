@@ -11,6 +11,12 @@ body{
     background-size: cover;
     height: 100vh;
 }
+.email-validation-err{
+    font-size: 11px;
+    padding-left: 10px;
+    color: red;
+    display: none;
+}
 .register-response-layer{
     background: black;
     height: 100vh;
@@ -79,7 +85,7 @@ body{
 }
 .register-form{
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    height: 490px;
+    /* height: 505px; */
     width: 370px;
     border-radius: 20px;
     z-index: 2;
@@ -139,7 +145,8 @@ input.date-input {
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     cursor: pointer;
 }
-.register-form-span{
+.register-form-footer {
+    padding-bottom: 15px;
     margin-left: 58px;
     font-size: 15px;
 }
