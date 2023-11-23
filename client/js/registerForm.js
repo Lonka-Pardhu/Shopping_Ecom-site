@@ -6,7 +6,15 @@ const registerForm = document.getElementById('account-form');
 const passwordValidationRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 const emailValidationRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})$/;
 let emailInput = document.querySelector('.email-input');
+let userFirstName = document.querySelector('.fname-input').value;
+let userLastName = document.querySelector('.lname-input').value;
+let userEmail = document.querySelector('.email-input').value;
+let userDob = document.querySelector('.date-input').value;
+let userPassword = document.querySelector('.password-input').value;
 let emailValidationErr = document.querySelector('.email-validation-err');
+let firstNameValidationErr = document.querySelector(".fname-validation-err");
+let lastNameValidationErr = document.querySelector(".lname-validation-err");
+let passwordValidationErr = document.querySelector(".password-validation-err");
 
 let timeout;
 emailInput.addEventListener('input', () => {
@@ -15,7 +23,23 @@ emailInput.addEventListener('input', () => {
         var enteredEmail = emailInput.value.trim();
         if (emailValidationRegex.test(enteredEmail)) {
             emailValidationErr.style.display = 'none';
-            console.log('running')
+            console.log('running');
+        } else if (emailInput.value === '') {
+            emailValidationErr.style.display = 'block';
+            emailValidationErr.innerHTML = 'This field is required.';
+        } else {
+            emailValidationErr.style.display = 'block';
+            emailValidationErr.innerHTML = 'Please enter a valid email address (Ex: user@example.com)';
+        }
+    }, 1000);
+})
+emailInput.addEventListener('input', () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+        var enteredEmail = emailInput.value.trim();
+        if (emailValidationRegex.test(enteredEmail)) {
+            emailValidationErr.style.display = 'none';
+            console.log('running');
         } else if (emailInput.value === '') {
             emailValidationErr.style.display = 'block';
             emailValidationErr.innerHTML = 'This field is required.';
@@ -38,18 +62,24 @@ registerForm.addEventListener('submit', (e) => {
         return passwordValidationRegex.test(password);
     }
     if (userFirstName === '') {
-        window.alert('Please enter First Name');
+        firstNameValidationErr.style.display = 'block';
+        firstNameValidationErr.innerHTML = 'This field is required.';
     } else if (userLastName === '') {
-        window.alert('Please enter your Last Name');
-    } /*else if (userEmail === '') {
-        window.alert('Please enter your Email.')
-    } */else if (userDob === '') {
+        lastNameValidationErr.style.display = 'block';
+        lastNameValidationErr.innerHTML = 'This field is required.';
+    } else if (userEmail === '') {
+        emailValidationErr.style.display = 'block';
+        emailValidationErr.innerHTML = 'This field is required.';
+    } else if (userPassword === '') {
+        passwordValidationErr.style.display = 'block';
+        passwordValidationErr.innerHTML = 'This field is required.';
+    } else if (!validatePassword(userPassword)) {
+        passwordValidationErr.style.display = 'block';
+        passwordValidationErr.innerHTML = 'err';
+    } else if (userDob === '') {
         window.alert('Please enter your Date of birth.')
     } else if (!document.querySelector('input[name="gender"]:checked')) {
         window.alert('Please select your Gender.');
-    } else if (userPassword === '') {
-        window.alert('Please create your Password');
-    } else if (!validatePassword(userPassword)) {
         window.alert('Password must be at least 8 characters long and include atleast one letter and one number.');
     }
     else {
