@@ -3,18 +3,54 @@ let openLoginFormTwo = document.querySelector('.login-page-button')
 let closeResponseMessage = document.querySelector('.close-response-message');
 let timerSpanOne = document.querySelector('.counter-display-one');
 const registerForm = document.getElementById('account-form');
-const passwordValidationRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-const emailValidationRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})$/;
+
+
+let firstNameInput = document.querySelector('.fname-input');
+let fNameValidationErr = document.querySelector('.fname-validation-err');
+
+let lastNameInput = document.querySelector('.lname-input');
+let lNameValidationErr = document.querySelector('.lname-validation-err');
+
 let emailInput = document.querySelector('.email-input');
-let userFirstName = document.querySelector('.fname-input').value;
-let userLastName = document.querySelector('.lname-input').value;
-let userEmail = document.querySelector('.email-input').value;
-let userDob = document.querySelector('.date-input').value;
-let userPassword = document.querySelector('.password-input').value;
 let emailValidationErr = document.querySelector('.email-validation-err');
-let firstNameValidationErr = document.querySelector(".fname-validation-err");
-let lastNameValidationErr = document.querySelector(".lname-validation-err");
-let passwordValidationErr = document.querySelector(".password-validation-err");
+const emailValidationRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})$/;
+
+let passwordInput = document.querySelector('.password-input');
+let passwordValidationErr = document.querySelector('.password-validation-err');
+const passwordValidationRegex = /^(?=.*[A-Z])(?=.*\d)(?=\S{8,}$).*/;
+
+firstNameInput.addEventListener('input', () => {
+    if (firstNameInput.value !== "") {
+        fNameValidationErr.style.display = 'none';
+    } else {
+        fNameValidationErr.style.display = 'block'
+        fNameValidationErr.innerHTML = "Please enter your first name";
+    }
+})
+firstNameInput.addEventListener('focusout', () => {
+    if (firstNameInput.value !== "") {
+        fNameValidationErr.style.display = 'none';
+    } else {
+        fNameValidationErr.style.display = 'block'
+        fNameValidationErr.innerHTML = "Please enter your first name";
+    }
+})
+lastNameInput.addEventListener('input', () => {
+    if (lastNameInput.value !== "") {
+        lNameValidationErr.style.display = 'none';
+    } else {
+        lNameValidationErr.style.display = 'block'
+        lNameValidationErr.innerHTML = "Please enter your last name";
+    }
+})
+lastNameInput.addEventListener('focusout', () => {
+    if (lastNameInput.value !== "") {
+        lNameValidationErr.style.display = 'none';
+    } else {
+        lNameValidationErr.style.display = 'block'
+        lNameValidationErr.innerHTML = "Please enter your last name";
+    }
+})
 
 let timeout;
 emailInput.addEventListener('input', () => {
@@ -23,66 +59,52 @@ emailInput.addEventListener('input', () => {
         var enteredEmail = emailInput.value.trim();
         if (emailValidationRegex.test(enteredEmail)) {
             emailValidationErr.style.display = 'none';
-            console.log('running');
         } else if (emailInput.value === '') {
             emailValidationErr.style.display = 'block';
-            emailValidationErr.innerHTML = 'This field is required.';
+            emailValidationErr.innerHTML = 'Please enter your email.';
         } else {
             emailValidationErr.style.display = 'block';
             emailValidationErr.innerHTML = 'Please enter a valid email address (Ex: user@example.com)';
         }
-    }, 1000);
+    }, 500);
 })
-emailInput.addEventListener('input', () => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-        var enteredEmail = emailInput.value.trim();
-        if (emailValidationRegex.test(enteredEmail)) {
-            emailValidationErr.style.display = 'none';
-            console.log('running');
-        } else if (emailInput.value === '') {
-            emailValidationErr.style.display = 'block';
-            emailValidationErr.innerHTML = 'This field is required.';
-        } else {
-            emailValidationErr.style.display = 'block';
-            emailValidationErr.innerHTML = 'Please enter a valid email address (Ex: user@example.com)';
-        }
-    }, 1000);
+emailInput.addEventListener('focusout', () => {
+    if (emailInput.value === '') {
+        emailValidationErr.style.display = 'block';
+        emailValidationErr.innerHTML = 'Please enter your email.';
+    } else {
+        emailValidationErr.style.display = 'none';
+    }
 })
+
+passwordInput.addEventListener('input', () => {
+    if (passwordValidationRegex.test(passwordInput.value)) {
+        passwordValidationErr.style.display = 'none';
+    } else {
+        passwordValidationErr.style.display = 'block';
+        passwordValidationErr.innerHTML = "Checking..."
+    }
+})
+passwordInput.addEventListener('focusout', () => {
+    if (passwordValidationRegex.test(passwordInput.value)) {
+        passwordValidationErr.style.display = 'none';
+    } else if (passwordInput.value === '') {
+        passwordValidationErr.innerHTML = "Please create your password."
+        passwordValidationErr.style.display = 'block';
+    } else {
+        passwordValidationErr.style.display = 'block';
+        passwordValidationErr.innerHTML = "*Must be at least 8 characters long, *Atleast one uppercase<br>*Atleast one number, *No spaces allowed."
+    }
+})
+
 registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    let userFirstName = document.querySelector('.fname-input').value;
-    let userLastName = document.querySelector('.lname-input').value;
-    let userEmail = document.querySelector('.email-input').value;
-    let userDob = document.querySelector('.date-input').value;
-    let userPassword = document.querySelector('.password-input').value;
+    if (fNameValidationErr.style.display === 'none' &&
+        lNameValidationErr.style.display === 'none' &&
+        emailValidationErr.style.display === 'none' &&
+        passwordValidationErr.style.display === 'none') {
 
-    function validatePassword(password) {
-        return passwordValidationRegex.test(password);
-    }
-    if (userFirstName === '') {
-        firstNameValidationErr.style.display = 'block';
-        firstNameValidationErr.innerHTML = 'This field is required.';
-    } else if (userLastName === '') {
-        lastNameValidationErr.style.display = 'block';
-        lastNameValidationErr.innerHTML = 'This field is required.';
-    } else if (userEmail === '') {
-        emailValidationErr.style.display = 'block';
-        emailValidationErr.innerHTML = 'This field is required.';
-    } else if (userPassword === '') {
-        passwordValidationErr.style.display = 'block';
-        passwordValidationErr.innerHTML = 'This field is required.';
-    } else if (!validatePassword(userPassword)) {
-        passwordValidationErr.style.display = 'block';
-        passwordValidationErr.innerHTML = 'err';
-    } else if (userDob === '') {
-        window.alert('Please enter your Date of birth.')
-    } else if (!document.querySelector('input[name="gender"]:checked')) {
-        window.alert('Please select your Gender.');
-        window.alert('Password must be at least 8 characters long and include atleast one letter and one number.');
-    }
-    else {
         const formData = new FormData(registerForm);
         const details = new URLSearchParams(formData);
 
@@ -108,6 +130,9 @@ registerForm.addEventListener('submit', (e) => {
             })
             .catch(err => console.log(err))
     }
+    else {
+        return false;
+    }
 })
 function countdownTimer(displayElement) {
     let timerSeconds = 3;
@@ -132,4 +157,3 @@ closeResponseMessage.addEventListener('click', () => {
     document.querySelector(".register-response-layer").style.display = 'none';
     document.querySelector(".register-response-two").style.display = 'none';
 })
-
