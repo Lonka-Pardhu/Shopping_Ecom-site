@@ -13,23 +13,24 @@ let loginPasswordValidationErr = document.querySelector('.login-password-validat
 
 let loginValidationTimeout;
 loginEmailInput.addEventListener('input', () => {
+    console.log('triggered')
     clearTimeout(loginValidationTimeout);
     loginValidationTimeout = setTimeout(() => {
         var enteredLoginEmail = loginEmailInput.value.trim();
         if (loginEmailValidationRegex.test(enteredLoginEmail)) {
-            loginEmailValidationErr.style.display = 'block';
+            loginEmailValidationErr.style.display = 'none';
         } else if (loginEmailInput.value === '') {
             loginEmailValidationErr.style.display = 'block';
-            loginEmailValidationErr.innerHTML = 'Please enter you email.'
+            loginEmailValidationErr.innerHTML = 'Please enter your email.';
         } else {
             loginEmailValidationErr.style.display = 'block';
             loginEmailValidationErr.innerHTML = 'Please enter a valid email address<br>(Ex: user@example.com)';
         }
     }, 500);
-
 })
 
 loginEmailInput.addEventListener('focusout', () => {
+    var enteredLoginEmail = loginEmailInput.value.trim();
     if (loginEmailInput.value === '') {
         loginEmailValidationErr.style.display = 'block';
         loginEmailValidationErr.innerHTML = 'Please enter your email.';
@@ -43,18 +44,21 @@ loginEmailInput.addEventListener('focusout', () => {
     }
 })
 
+loginPasswordInput.addEventListener('focusout', () => {
+    if (loginPasswordInput.value === '') {
+        loginPasswordValidationErr.innerHTML = "Please enter your password."
+        loginPasswordValidationErr.style.display = 'block';
+    } else {
+        loginPasswordValidationErr.style.display = 'none';
+    }
+})
+
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    let userLoginEmail = document.querySelector('.login-email-input').value;
-    let userLoginPassword = document.querySelector('.login-password-input').value;
+    if (loginEmailValidationErr.style.display === 'none' &&
+        loginPasswordValidationErr.style.display === 'none') {
 
-    if (userLoginEmail === '') {
-        window.alert('Please enter your Email.')
-    } else if (userLoginPassword === '') {
-        window.alert('Please enter your Password')
-    }
-    else {
         const formData = new FormData(loginForm);
         const details = new URLSearchParams(formData);
 
@@ -86,6 +90,8 @@ loginForm.addEventListener('submit', (e) => {
                 }
             })
             .catch(err => console.log(err))
+    } else {
+        return false;
     }
 })
 
