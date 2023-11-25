@@ -73,7 +73,12 @@ emailInput.addEventListener('focusout', () => {
         emailValidationErr.style.display = 'block';
         emailValidationErr.innerHTML = 'Please enter your email.';
     } else {
-        emailValidationErr.style.display = 'none';
+        if (emailValidationRegex.test(enteredEmail)) {
+            emailValidationErr.style.display = 'none';
+        } else {
+            emailValidationErr.style.display = 'block';
+            emailValidationErr.innerHTML = 'Please enter a valid email address (Ex: user@example.com)';
+        }
     }
 })
 
@@ -141,16 +146,16 @@ function countdownTimer(displayElement) {
         timerSeconds--;
         if (timerSeconds <= -1) {
             clearInterval();
-            window.location.href = '/index.html'
+            window.location.href = '/'
         }
     }, 1000);
 }
 openLoginFormOne.addEventListener('click', () => {
-    window.location.href = '/index.html'
+    window.location.href = '/'
 })
 
 openLoginFormTwo.addEventListener('click', () => {
-    window.location.href = '/index.html'
+    window.location.href = '/'
 })
 
 closeResponseMessage.addEventListener('click', () => {

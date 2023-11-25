@@ -2,6 +2,46 @@ let openRegisterForm = document.querySelector('.register-span');
 let registerRedirectBtn = document.querySelector('.register-redirect');
 let closeResponseBtn = document.querySelector('.close-response');
 const loginForm = document.getElementById('form-login');
+const loginEmailValidationRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})$/;
+
+
+let loginEmailInput = document.querySelector('.login-email-input');
+let loginEmailValidationErr = document.querySelector('.login-email-validation-err');
+
+let loginPasswordInput = document.querySelector('.login-password-input');
+let loginPasswordValidationErr = document.querySelector('.login-password-validation-err');
+
+let loginValidationTimeout;
+loginEmailInput.addEventListener('input', () => {
+    clearTimeout(loginValidationTimeout);
+    loginValidationTimeout = setTimeout(() => {
+        var enteredLoginEmail = loginEmailInput.value.trim();
+        if (loginEmailValidationRegex.test(enteredLoginEmail)) {
+            loginEmailValidationErr.style.display = 'block';
+        } else if (loginEmailInput.value === '') {
+            loginEmailValidationErr.style.display = 'block';
+            loginEmailValidationErr.innerHTML = 'Please enter you email.'
+        } else {
+            loginEmailValidationErr.style.display = 'block';
+            loginEmailValidationErr.innerHTML = 'Please enter a valid email address<br>(Ex: user@example.com)';
+        }
+    }, 500);
+
+})
+
+loginEmailInput.addEventListener('focusout', () => {
+    if (loginEmailInput.value === '') {
+        loginEmailValidationErr.style.display = 'block';
+        loginEmailValidationErr.innerHTML = 'Please enter your email.';
+    } else {
+        if (loginEmailValidationRegex.test(enteredLoginEmail)) {
+            loginEmailValidationErr.style.display = 'none';
+        } else {
+            loginEmailValidationErr.style.display = 'block';
+            loginEmailValidationErr.innerHTML = 'Please enter a valid email address<br>(Ex: user@example.com)';
+        }
+    }
+})
 
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
