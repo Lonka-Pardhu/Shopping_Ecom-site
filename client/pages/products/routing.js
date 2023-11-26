@@ -7,24 +7,28 @@ function renderProductDetailsPage() {
     data = storedData;
 
     var productId = JSON.parse(window.localStorage.getItem('productId'))
-    loader.style.display = 'none'
+    loader.style.display = 'none';
 
+    let clickedProduct = data.result.filter(function (product) {
+        return product.id == productId;
+    });
+    clickedProduct = clickedProduct[0];
     const pageProductImage = document.getElementById('pageProductImage');
-    pageProductImage.src = data.result[productId].image;
+    pageProductImage.src = clickedProduct.image;
 
     const pageProductName = document.getElementById('pageProductName');
-    pageProductName.innerHTML = data.result[productId].name;
+    pageProductName.innerHTML = clickedProduct.name;
 
     const pageProductDescription = document.getElementById('pageProductDescription');
-    pageProductDescription.innerHTML = data.result[productId].description;
+    pageProductDescription.innerHTML = clickedProduct.description;
 
     const pageProductPrice = document.getElementById('pageProductPrice');
-    pageProductPrice.innerHTML = data.result[productId].price;
+    pageProductPrice.innerHTML = clickedProduct.price;
 
     const pageProductRating = document.getElementById('pageProductRating');
-    pageProductRating.innerHTML = data.result[productId].rating;
+    pageProductRating.innerHTML = clickedProduct.rating;
 
     const pageProductReviews = document.getElementById('pageProductReviews');
-    pageProductReviews.innerHTML = data.result[productId].reviews;
+    pageProductReviews.innerHTML = clickedProduct.reviews;
 
 }

@@ -79,6 +79,7 @@ function addRouteToProduct() {
     var element = document.querySelectorAll('.product');
     element.forEach(ele => {
         ele.addEventListener('click', () => {
+            console.log(ele.id)
             window.localStorage.setItem('productId', ele.id)
             renderProductDetailsPage();
         })

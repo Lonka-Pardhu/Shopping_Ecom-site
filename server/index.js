@@ -5,7 +5,15 @@ const fs = require('fs');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('client'))
+app.use(express.static('client', { index: false }));
+app.use(function (req, res, next) {
+    console.log('req url', req.url);
+    next();
+})
+app.get('/', (req, res, next) => {
+    res.redirect('/pages/login/index.html');
+})
+// app.use(express.static('client'))
 
 app.post('/register', function (req, res) {
     console.log(req.body);
