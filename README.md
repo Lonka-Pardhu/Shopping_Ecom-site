@@ -6,12 +6,11 @@ https://shopping-website-99.vercel.app/
 
 ---
 
-The E-Commerce Platform, developed using ***Html , Css and Express.js***, showcases my proficiency in creating engaging and interactive user interfaces. It features a secure user authentication system and dynamic product page interactions. The project highlights my strong frontend skills and foundational knowledge in backend development, using JSON for efficient data management.
+A user-friendly e-commerce platform developed using ***Html , Css and Express.js***, with innovative features
+like 'more' and 'less' buttons, optimizing page loading. Implemented robust user authentication using ***Express.js*** and **RESTful APIs**, with
+industry-level form validation. Fetching products dynamically through APIs and managing data with **JSON**, the project showcases comprehensive
+UI/UX design skills. Currently converting this vanilla js project to **React** project for enhanced functionality and scalability.
 
----
-
-### Key Features:   
-Responsive User Authentication: Implemented secure user registration and login functionalities using ***Express.js*** for backend management.
 
 ---
 
