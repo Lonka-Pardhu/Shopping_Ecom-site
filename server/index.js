@@ -13,6 +13,12 @@ app.use(function (req, res, next) {
 app.get('/', (req, res, next) => {
     res.redirect('/pages/login/index.html');
 })
+app.get('/register.html', (req, res, next) => {
+    res.redirect('/pages/register/register.html')
+})
+app.get('/products.html', (req, res, next) => {
+    res.redirect('/pages/products/products.html')
+})
 // app.use(express.static('client'))
 
 app.post('/register', function (req, res) {
@@ -58,7 +64,8 @@ app.post('/login', function (req, res) {
                 status: 404,
                 message: 'Account does not exist, please register and try again.'
             })
-        } else { // if the file is the readable it means user has an account >> proceeds to check if he/she has entered correct password//
+        } else {
+            // if the file is readable it means that user has an account >> proceeds to check if he/she has entered correct password//
             fs.readFile(userAccount, 'utf8', (err, userData) => {
                 if (err) {
                     console.log('Error reading file', err);
