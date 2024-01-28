@@ -47,17 +47,19 @@ https://github.com/Lonka-Pardhu/Shopping_Ecom-site/assets/108354935/040094f8-37b
 ![form-validation](https://github.com/Lonka-Pardhu/Shopping_Ecom-site/assets/108354935/952cf090-5c9d-45d2-8ce7-b4b41ca36b0d)   
 ---    
 
-### Register    
+### Register     
+After successfully registering, the user is redirected to the login page. 
 
 
 https://github.com/Lonka-Pardhu/Shopping_Ecom-site/assets/108354935/fdf6ce6e-da0d-4fdb-a26c-141a5fe36ab0
 
 
-After successfully registering, the user is redirected to the login page.     
+    
 ---   
 
 
-### Same email error handling   
+### Same email error handling     
+If an email address is already registered, users are presented with two options: either login to their existing account or proceed with a different email address.
 
 
 https://github.com/Lonka-Pardhu/Shopping_Ecom-site/assets/108354935/e3abab56-98b0-49e2-81fa-1804b3550fba
@@ -66,26 +68,28 @@ https://github.com/Lonka-Pardhu/Shopping_Ecom-site/assets/108354935/e3abab56-98b
     
    
    
-   If an email address is already registered, users are presented with two options: either login to their existing account or proceed with a different email address.
+   
 ---      
 
-### Login email error handling   
+### Login email error handling     
+If an invalid email is given then user is asked to register and login.   
 
 
 https://github.com/Lonka-Pardhu/Shopping_Ecom-site/assets/108354935/91a917fd-65e1-4802-a787-c14b5c761fc6
 
 
-If an invalid email is given then user is asked to register and login.   
+
 ---   
 
-### Login   
+### Login    
+After successfully logging in user is redirected to the main page
 
 
 https://github.com/Lonka-Pardhu/Shopping_Ecom-site/assets/108354935/88e7c097-4714-448a-8461-455b4bc605b7
 
 
    
-After successfully logging in user is redirected to the main page
+---
 ## Run Locally
 
 Clone the project
